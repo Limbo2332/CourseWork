@@ -1,0 +1,14 @@
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\bin\Debug\CourseWork.exe.config
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\bin\Debug\CourseWork.exe
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.csproj.AssemblyReference.cache
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.Main.resources
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.ManagerLogin.resources
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.UserLogin.resources
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.cache
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.csproj.CoreCompileInputs.cache
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.exe
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.pdb
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\bin\Debug\CourseWork.pdb
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.CreditMenu.resources
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.DepositMenu.resources
