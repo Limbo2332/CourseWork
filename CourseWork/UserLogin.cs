@@ -49,7 +49,7 @@ namespace CourseWork
                 if (File.Exists(path1))
                     File.Delete(path1);
                 Owner.Visible = true;
-                Close();
+                Visible = false;
             }
         }
 
