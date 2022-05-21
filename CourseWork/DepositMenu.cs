@@ -18,11 +18,51 @@ namespace CourseWork
         {
             Output(LoadInformation());
         }
+        private void DepositMenu_FormClosing(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
+            if (result == DialogResult.Yes)
+            {
+                string path = @"../../../tempcredit.txt";
+                string path1 = @"../../../tempdeposit.txt";
+                if (File.Exists(path))
+                    File.Delete(path);
+                if (File.Exists(path1))
+                    File.Delete(path1);
+                Application.Exit();
+            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
+            if (result == DialogResult.Yes)
+            {
+                string path = @"../../../tempcredit.txt";
+                string path1 = @"../../../tempdeposit.txt";
+                if (File.Exists(path))
+                    File.Delete(path);
+                if (File.Exists(path1))
+                    File.Delete(path1);
+                Owner.Visible = true;
+                Close();
+            }
+        }
+
+        #region Terms
         private void TermsLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://privatbank.ua/terms");
         }
+        #endregion
 
+        #region Checking that the input is correct and availability of deposit/credit
         private bool CheckCorrectOrNot()
         {
             try
@@ -78,11 +118,14 @@ namespace CourseWork
         {
             foreach (var credit in Bank.ListOfCredits)
             {
-                if(credit.Owner.PassportNumber == InputPassportNumber.Text || credit.Owner.PhoneNumber == InputPhoneNumber.Text)
+                if (credit.Owner.PassportNumber == InputPassportNumber.Text || credit.Owner.PhoneNumber == InputPhoneNumber.Text)
                     return true;
             }
             return false;
         }
+        #endregion
+
+        #region InfoAboutDeposits
         private Deposit LoadInformation()
         {
             string path = @"../../../tempdeposit.txt";
@@ -106,6 +149,9 @@ namespace CourseWork
             OutputMontlyPayment.Text = deposit.AverageMontlyIncome().ToString();
             OutputTerm.Text = deposit.Term.ToString();
         }
+        #endregion
+
+        #region Buttons
         private void ConfirmDepositButton_Click(object sender, EventArgs e)
         {
 
@@ -189,41 +235,11 @@ namespace CourseWork
                     }
                 }
             }
-            
+
 
         }
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
-            if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
-                Application.Exit();
-            }
-        }
+        #endregion
 
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
-            if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
-                Owner.Visible = true;
-                Close();
-            }
-        }
 
     }
 }

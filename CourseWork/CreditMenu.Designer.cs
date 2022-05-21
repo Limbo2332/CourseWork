@@ -429,6 +429,7 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreditMenu";
             this.Load += new System.EventHandler(this.CreditMenu_Load);
+            this.FormClosing += this.CreditMenu_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

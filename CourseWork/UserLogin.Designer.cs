@@ -315,6 +315,7 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserLogin";
             this.Load += new System.EventHandler(this.UserLogin_Load);
+            this.FormClosing += this.UserLogin_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

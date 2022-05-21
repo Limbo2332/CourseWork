@@ -19,6 +19,10 @@ namespace CourseWork
             OutPut(LoadInformation());
 
         }
+        private void CreditMenu_FormClosing(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         private void CloseButton_Click(object sender, EventArgs e)
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -52,11 +56,14 @@ namespace CourseWork
             }
         }
 
+        #region Terms
         private void TermsLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://privatbank.ua/terms");
         }
+        #endregion
 
+        #region Checking that the input is correct and availability of deposit/credit
         private bool CheckCorrectOrNot()
         {
             try
@@ -117,6 +124,9 @@ namespace CourseWork
             }
             return false;
         }
+        #endregion
+
+        #region InfoAboutCredits
         private Credit LoadInformation()
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
@@ -140,6 +150,9 @@ namespace CourseWork
             OutputMontlyPayment.Text = credit.MonthlyPayment().ToString();
             OutputTerm.Text = credit.Term.ToString();
         }
+        #endregion
+
+        #region Buttons
         private void ConfirmCreditButton_Click(object sender, EventArgs e)
         {
 
@@ -206,7 +219,7 @@ namespace CourseWork
 
                         foreach (var credit in Bank.ListOfCredits)
                         {
-                            if(credit.Owner.PassportNumber == InputPassportNumber.Text || credit.Owner.PhoneNumber == InputPhoneNumber.Text)
+                            if (credit.Owner.PassportNumber == InputPassportNumber.Text || credit.Owner.PhoneNumber == InputPhoneNumber.Text)
                             {
                                 OutPut(credit);
                                 break;
@@ -225,5 +238,7 @@ namespace CourseWork
             }
 
         }
+        #endregion
+
     }
 }

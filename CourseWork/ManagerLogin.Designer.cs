@@ -729,6 +729,7 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagerMenu";
             this.Load += new System.EventHandler(this.ManagerLogin_Load);
+            this.FormClosing += this.ManagerLogin_FormClosing;
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.Add.ResumeLayout(false);

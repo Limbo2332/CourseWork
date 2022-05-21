@@ -35,23 +35,12 @@ namespace CourseWork
             
 
         }
-        private void UserLogin_Click(object sender, EventArgs e)
+        private void Main_FormClosing(object sender, EventArgs e)
         {
-            UserLogin userLogin = new UserLogin();
-            userLogin.Owner = this;
-            userLogin.Show();
-            Visible = false;
+            Application.Exit();
         }
 
-        private void ManagerLogin_Click(object sender, EventArgs e)
-        {
-            ManagerLogin managerLogin = new ManagerLogin();
-            managerLogin.Owner = this;
-            managerLogin.Show();
-            Visible = false;
-        }
-
-        private void CloseButton_Click_1(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
@@ -66,5 +55,26 @@ namespace CourseWork
                 Application.Exit();
             }
         }
+
+        #region Opening UserLogin form
+        private void UserLogin_Click(object sender, EventArgs e)
+        {
+            UserLogin userLogin = new UserLogin();
+            userLogin.Owner = this;
+            userLogin.Show();
+            Visible = false;
+        }
+        #endregion
+
+        #region Opening ManagerLogin form
+        private void ManagerLogin_Click(object sender, EventArgs e)
+        {
+            ManagerLogin managerLogin = new ManagerLogin();
+            managerLogin.Owner = this;
+            managerLogin.Show();
+            Visible = false;
+        }
+        #endregion
+
     }
 }

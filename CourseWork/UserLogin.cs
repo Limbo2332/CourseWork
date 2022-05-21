@@ -16,6 +16,42 @@ namespace CourseWork
         {
             
         }
+        private void UserLogin_FormClosing(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
+            if (result == DialogResult.Yes)
+            {
+                string path = @"../../../tempcredit.txt";
+                string path1 = @"../../../tempdeposit.txt";
+                if (File.Exists(path))
+                    File.Delete(path);
+                if (File.Exists(path1))
+                    File.Delete(path1);
+                Application.Exit();
+            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
+            if (result == DialogResult.Yes)
+            {
+                string path = @"../../../tempcredit.txt";
+                string path1 = @"../../../tempdeposit.txt";
+                if (File.Exists(path))
+                    File.Delete(path);
+                if (File.Exists(path1))
+                    File.Delete(path1);
+                Owner.Visible = true;
+                Close();
+            }
+        }
 
         #region CreditCode
 
@@ -161,37 +197,5 @@ namespace CourseWork
         }
         #endregion
 
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
-            if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
-                Application.Exit();
-            }
-        }
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
-            if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
-                Owner.Visible = true;
-                Close();
-            }
-        }
     }
 }

@@ -429,6 +429,7 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepositMenu";
             this.Load += new System.EventHandler(this.DepositMenu_Load);
+            this.FormClosing += this.DepositMenu_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

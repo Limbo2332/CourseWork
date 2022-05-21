@@ -29,6 +29,11 @@ namespace CourseWork
             ListBoxInfoChoise.Items.AddRange(new string[] { "Кредити", "Депозити", "Співробітники", "Кількість клієнтів", "Загальна виручка" });
         }
 
+        private void ManagerLogin_FormClosing(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         #region MenuStrip
         private void додатиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -100,8 +105,9 @@ namespace CourseWork
         }
         #endregion
 
+        #region Checking that the input is correct and availability of deposit/credit/employee
         private bool CheckCorrectOrNot(TextBox inputFirstName, TextBox inputLastName, TextBox inputAge, TextBox inputPassport,
-            TextBox inputPhonenumber)
+    TextBox inputPhonenumber)
         {
             try
             {
@@ -166,131 +172,9 @@ namespace CourseWork
             }
             return false;
         }
+        #endregion
 
-        private bool EditPersonValues(ref Person person)
-        {
-            Regex Name = new Regex(@"[а-я]");
-            Regex ForPassportNumber = new Regex(@"^\d{9}$");
-            Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
-
-            if ((string)EditChoiseParameter.SelectedItem == "Ім'я")
-            {
-                if (Name.IsMatch(InputEditParameter.Text))
-                {
-                    person.FirstName = InputEditParameter.Text;
-                    MessageBox.Show("Ім'я успішно змінено!");
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Перевірте правильність вводу імені!");
-                    return false;
-                }
-
-            }
-            else if ((string)EditChoiseParameter.SelectedItem == "Прізвище")
-            {
-                if (Name.IsMatch(InputEditParameter.Text))
-                {
-                    person.LastName = InputEditParameter.Text;
-                    MessageBox.Show("Прізвище успішно змінено!");
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Перевірте правильність вводу прізвища!");
-                    return false;
-                }
-
-            }
-            else if ((string)EditChoiseParameter.SelectedItem == "Вік")
-            {
-                try
-                {
-                    int age = Convert.ToInt32(InputEditParameter.Text);
-                    if (age < 18 || age > 65)
-                        throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");
-                    person.Age = age;
-                    MessageBox.Show("Вік успішно змінено!");
-                    return true;
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Перевірте правильність вводу!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                return false;
-            }
-            else if ((string)EditChoiseParameter.SelectedItem == "Номер паспорту")
-            {
-                try
-                {
-                    string passportNumber = InputEditPassport.Text;
-                    foreach (var credit in Bank.ListOfCredits)
-                    {
-                        if (credit.Owner.PassportNumber == passportNumber)
-                            throw new Exception("Користувач з цим номером паспорту вже має кредит! Операцію відмінено!");
-                    }
-                    foreach (var deposit in Bank.ListOfDeposits)
-                    {
-                        if (deposit.Owner.PassportNumber == passportNumber)
-                            throw new Exception("Користувач з цим номером паспорту вже має депозит! Операцію відмінено!");
-                    }
-                    foreach (var employee in Bank.ListOfEmployees)
-                    {
-                        if (employee.PassportNumber == passportNumber)
-                            throw new Exception("Користувач з цим номером паспорту вже працює в нашому банку! Операцію відмінено!");
-                    }
-                    if (passportNumber.Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
-                        throw new Exception("Номер паспорту повинен містити 9 цифр. Перевірте правильність вводу.");
-                    person.PassportNumber = passportNumber;
-                    MessageBox.Show("Номер паспорту успішно змінено!");
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                return false;
-            }
-            else if ((string)EditChoiseParameter.SelectedItem == "Номер телефону")
-            {
-                try
-                {
-                    string phoneNumber = InputEditParameter.Text;
-                    foreach (var credit in Bank.ListOfCredits)
-                    {
-                        if (credit.Owner.PhoneNumber == phoneNumber)
-                            throw new Exception("Користувач з цим номером телефону вже має кредит! Операцію відмінено!");
-                    }
-                    foreach (var deposit in Bank.ListOfDeposits)
-                    {
-                        if (deposit.Owner.PhoneNumber == phoneNumber)
-                            throw new Exception("Користувач з цим номером телефону вже має депозит! Операцію відмінено!");
-                    }
-                    foreach (var employee in Bank.ListOfEmployees)
-                    {
-                        if (employee.PhoneNumber == phoneNumber)
-                            throw new Exception("Користувач з цим номером телефону вже працює в нашому банку! Операцію відмінено!");
-                    }
-                    if (!ForPhoneNumber.IsMatch(phoneNumber))
-                        throw new Exception("Перевірте правильність вводу мобільного телефону.");
-                    person.PhoneNumber = phoneNumber;
-                    MessageBox.Show("Номер телефону успішно змінено!");
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                return false;
-            }
-            return false;
-        }
-
+        #region Add credit/deposit/employee
         private void ConfirmAddButton_Click(object sender, EventArgs e)
         {
             if (CheckCorrectOrNot(InputAddFirstName, InputAddLastName, InputAddAge, InputAddPassport, InputAddPhoneNumber))
@@ -453,7 +337,9 @@ namespace CourseWork
                 InputTerm.Visible = true;
             }
         }
+        #endregion
 
+        #region Remove credit/deposit/employee
         private void ButtonRemoveConfirm_Click(object sender, EventArgs e)
         {
             string passportNumber = InputRemovePassport.Text;
@@ -552,6 +438,132 @@ namespace CourseWork
                 }
             }
             MessageBox.Show("Даний користувач не працює в нашому банку, немає депозиту чи кредиту.");
+        }
+        #endregion
+
+        #region Edit Info about credit/deposit/employee
+        private bool EditPersonValues(ref Person person)
+        {
+            Regex Name = new Regex(@"[а-я]");
+            Regex ForPassportNumber = new Regex(@"^\d{9}$");
+            Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
+
+            if ((string)EditChoiseParameter.SelectedItem == "Ім'я")
+            {
+                if (Name.IsMatch(InputEditParameter.Text))
+                {
+                    person.FirstName = InputEditParameter.Text;
+                    MessageBox.Show("Ім'я успішно змінено!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Перевірте правильність вводу імені!");
+                    return false;
+                }
+
+            }
+            else if ((string)EditChoiseParameter.SelectedItem == "Прізвище")
+            {
+                if (Name.IsMatch(InputEditParameter.Text))
+                {
+                    person.LastName = InputEditParameter.Text;
+                    MessageBox.Show("Прізвище успішно змінено!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Перевірте правильність вводу прізвища!");
+                    return false;
+                }
+
+            }
+            else if ((string)EditChoiseParameter.SelectedItem == "Вік")
+            {
+                try
+                {
+                    int age = Convert.ToInt32(InputEditParameter.Text);
+                    if (age < 18 || age > 65)
+                        throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");
+                    person.Age = age;
+                    MessageBox.Show("Вік успішно змінено!");
+                    return true;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Перевірте правильність вводу!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return false;
+            }
+            else if ((string)EditChoiseParameter.SelectedItem == "Номер паспорту")
+            {
+                try
+                {
+                    string passportNumber = InputEditPassport.Text;
+                    foreach (var credit in Bank.ListOfCredits)
+                    {
+                        if (credit.Owner.PassportNumber == passportNumber)
+                            throw new Exception("Користувач з цим номером паспорту вже має кредит! Операцію відмінено!");
+                    }
+                    foreach (var deposit in Bank.ListOfDeposits)
+                    {
+                        if (deposit.Owner.PassportNumber == passportNumber)
+                            throw new Exception("Користувач з цим номером паспорту вже має депозит! Операцію відмінено!");
+                    }
+                    foreach (var employee in Bank.ListOfEmployees)
+                    {
+                        if (employee.PassportNumber == passportNumber)
+                            throw new Exception("Користувач з цим номером паспорту вже працює в нашому банку! Операцію відмінено!");
+                    }
+                    if (passportNumber.Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
+                        throw new Exception("Номер паспорту повинен містити 9 цифр. Перевірте правильність вводу.");
+                    person.PassportNumber = passportNumber;
+                    MessageBox.Show("Номер паспорту успішно змінено!");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return false;
+            }
+            else if ((string)EditChoiseParameter.SelectedItem == "Номер телефону")
+            {
+                try
+                {
+                    string phoneNumber = InputEditParameter.Text;
+                    foreach (var credit in Bank.ListOfCredits)
+                    {
+                        if (credit.Owner.PhoneNumber == phoneNumber)
+                            throw new Exception("Користувач з цим номером телефону вже має кредит! Операцію відмінено!");
+                    }
+                    foreach (var deposit in Bank.ListOfDeposits)
+                    {
+                        if (deposit.Owner.PhoneNumber == phoneNumber)
+                            throw new Exception("Користувач з цим номером телефону вже має депозит! Операцію відмінено!");
+                    }
+                    foreach (var employee in Bank.ListOfEmployees)
+                    {
+                        if (employee.PhoneNumber == phoneNumber)
+                            throw new Exception("Користувач з цим номером телефону вже працює в нашому банку! Операцію відмінено!");
+                    }
+                    if (!ForPhoneNumber.IsMatch(phoneNumber))
+                        throw new Exception("Перевірте правильність вводу мобільного телефону.");
+                    person.PhoneNumber = phoneNumber;
+                    MessageBox.Show("Номер телефону успішно змінено!");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return false;
+            }
+            return false;
         }
 
         private void EditChoise_SelectedIndexChanged(object sender, EventArgs e)
@@ -1018,7 +1030,9 @@ namespace CourseWork
                 MessageBox.Show("Даний користувач не працює в нашому банку!");
             }
         }
+        #endregion
 
+        #region Show info
         private void ListBoxInfoChoise_SelectedIndexChanged(object sender, EventArgs e)
         {
             TableView.AllowUserToAddRows = false;
@@ -1109,6 +1123,7 @@ namespace CourseWork
                 TableView.DataSource = income;
             }
         }
+        #endregion
 
     }
 }

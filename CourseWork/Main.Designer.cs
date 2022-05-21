@@ -82,7 +82,7 @@ namespace CourseWork
             this.CloseButton.TabIndex = 19;
             this.CloseButton.Text = "X";
             this.CloseButton.UseVisualStyleBackColor = false;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click_1);
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // Main
             // 
@@ -99,6 +99,7 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.FormClosing += this.Main_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 
