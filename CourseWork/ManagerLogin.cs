@@ -1117,8 +1117,8 @@ namespace CourseWork
                 income.Columns.Add("Прибуток банку", typeof(double));
                 income.Columns.Add("Витрати на зарплати співробітникам", typeof(double));
 
-                income.Rows.Add(Bank.AverageSumOfCredits() * Bank.MainManager.CountOfClients, Bank.AverageSumOfDeposits() *
-                    Bank.MainManager.CountOfClients, Bank.CountIncome(), Bank.SalaryExpense());
+                income.Rows.Add(Math.Round(Bank.AverageSumOfCredits() * Bank.MainManager.CountOfClients, 2), Math.Round(Bank.AverageSumOfDeposits() *
+                    Bank.MainManager.CountOfClients, 2), Bank.CountIncome(), Bank.SalaryExpense());
 
                 TableView.DataSource = income;
             }
