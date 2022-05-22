@@ -74,7 +74,7 @@ namespace CourseWork
         /// </summary>
         static public int CountClients()
         {
-            return ListOfCredits.Count + ListOfEmployees.Count;
+            return ListOfCredits.Count + ListOfDeposits.Count;
         }
 
         /// <summary>
