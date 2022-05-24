@@ -77,12 +77,6 @@ namespace CourseWork
             var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
             if (result == DialogResult.Yes)
             {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Owner.Visible = true;
                 Visible = false;
             }
@@ -93,15 +87,7 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
             if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Application.Exit();
-            }
         }
         #endregion
 
@@ -118,7 +104,7 @@ namespace CourseWork
                 string phoneNumber = inputPhonenumber.Text;
                 // регулярні вирази
 
-                Regex Name = new Regex(@"[а-я]");
+                Regex Name = new Regex(@"[А-Я]{1}[а-я]");
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
@@ -135,6 +121,11 @@ namespace CourseWork
                 return true;
             }
             catch (FormatException)
+            {
+                MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
+                return false;
+            }
+            catch (OverflowException)
             {
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
                 return false;
@@ -493,6 +484,10 @@ namespace CourseWork
                 {
                     MessageBox.Show("Перевірте правильність вводу!");
                 }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("Перевірте правильність вводу!");
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -676,6 +671,7 @@ namespace CourseWork
             }
             if ((string)EditChoise.SelectedItem == "Інформацію про кредит")
             {
+                bool hasCredit = false;
                 foreach (var credit in Bank.ListOfCredits)
                 {
                     if (credit.Owner.PassportNumber == passportNumber && credit.Owner.PhoneNumber != phoneNumber)
@@ -690,7 +686,7 @@ namespace CourseWork
                     }
                     else if (credit.Owner.PassportNumber == passportNumber && credit.Owner.PhoneNumber == phoneNumber)
                     {
-
+                        hasCredit = true;
                         Person person = credit.Owner;
                         bool res = EditPersonValues(ref person);
                         if (res)
@@ -803,13 +799,13 @@ namespace CourseWork
                             return;
                         }
                     }
-
                 }
-                MessageBox.Show("Даний користувач немає кредиту!");
-
+                if (!hasCredit)
+                    MessageBox.Show("Даний користувач немає кредиту!");
             }
             else if ((string)EditChoise.SelectedItem == "Інформацію про депозит")
             {
+                bool hasDeposit = false;
                 foreach (var deposit in Bank.ListOfDeposits)
                 {
                     if (deposit.Owner.PassportNumber == passportNumber && deposit.Owner.PhoneNumber != phoneNumber)
@@ -824,7 +820,7 @@ namespace CourseWork
                     }
                     else if (deposit.Owner.PassportNumber == passportNumber && deposit.Owner.PhoneNumber == phoneNumber)
                     {
-
+                        hasDeposit = true;
                         Person person = deposit.Owner;
                         bool res = EditPersonValues(ref person);
                         if (res)
@@ -938,10 +934,12 @@ namespace CourseWork
                         }
                     }
                 }
-                MessageBox.Show("Даний користувач немає депозиту!");
+                if(!hasDeposit)
+                    MessageBox.Show("Даний користувач немає депозиту!");
             }
             else if ((string)EditChoise.SelectedItem == "Інформацію про співробітника")
             {
+                bool isEmployee = false;
                 foreach (var employee in Bank.ListOfEmployees)
                 {
                     if (employee.PassportNumber == passportNumber && employee.PhoneNumber != phoneNumber)
@@ -956,6 +954,7 @@ namespace CourseWork
                     }
                     else if (employee.PassportNumber == passportNumber && employee.PhoneNumber == phoneNumber)
                     {
+                        isEmployee = true;
                         Person person = employee;
                         if (EditPersonValues(ref person))
                         {
@@ -1027,7 +1026,8 @@ namespace CourseWork
                         }
                     }
                 }
-                MessageBox.Show("Даний користувач не працює в нашому банку!");
+                if(!isEmployee)
+                    MessageBox.Show("Даний користувач не працює в нашому банку!");
             }
         }
         #endregion

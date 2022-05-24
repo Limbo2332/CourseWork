@@ -16,7 +16,6 @@ namespace CourseWork
 
         private void CreditMenu_Load(object sender, EventArgs e)
         {
-            OutPut(LoadInformation());
 
         }
         private void CreditMenu_FormClosing(object sender, EventArgs e)
@@ -28,15 +27,7 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
             if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Application.Exit();
-            }
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -45,12 +36,6 @@ namespace CourseWork
             var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
             if (result == DialogResult.Yes)
             {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Owner.Visible = true;
                 Visible = false;
             }
@@ -76,7 +61,7 @@ namespace CourseWork
 
                 // регулярні вирази
 
-                Regex Name = new Regex(@"[а-я]");
+                Regex Name = new Regex(@"[А-Я]{1}[а-я]");
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
@@ -96,6 +81,11 @@ namespace CourseWork
                 return true;
             }
             catch (FormatException)
+            {
+                MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
+                return false;
+            }
+            catch (OverflowException)
             {
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
                 return false;
@@ -127,21 +117,6 @@ namespace CourseWork
         #endregion
 
         #region InfoAboutCredits
-        private Credit LoadInformation()
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            string path = @"../../../tempcredit.txt";
-            string[] creditFields = File.ReadAllText(path).Split(' ');
-            Credit credit = new Credit();
-            credit.ID = Guid.NewGuid();
-            credit.SumOfCredit = Convert.ToDouble(creditFields[0]);
-            credit.Term = Convert.ToInt32(creditFields[1]);
-            credit.InterestRate = Convert.ToDouble(creditFields[2]);
-            credit.FinalSum = Bank.CountFinalSumOfCredit(credit);
-            OutPut(credit);
-
-            return credit;
-        }
         private void OutPut(Credit credit)
         {
             OutputSumOfCredit.Text = credit.SumOfCredit.ToString();
@@ -168,9 +143,11 @@ namespace CourseWork
                     MessageBox.Show("Ви вже маєте кредит!");
                     return;
                 }
-                Credit credit = LoadInformation();
                 Person person = new Person(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
                     InputPassportNumber.Text, InputPhoneNumber.Text);
+                Credit credit = new Credit(person, Convert.ToDouble(OutputSumOfCredit.Text), Convert.ToInt32(OutputTerm.Text),
+                    Convert.ToDouble(OutputInterestRate.Text), Convert.ToDouble(OutputFinalSum.Text));
+                credit.ID = Guid.NewGuid();
                 credit.Owner = person;
                 string path2 = @"../../../credits.txt";
                 string contents = credit.ToString();
@@ -232,7 +209,6 @@ namespace CourseWork
                     {
                         MessageBox.Show("У Вас немає кредиту чи депозиту в нашому банку.");
                         ConfirmCreditButton.Enabled = true;
-                        OutPut(LoadInformation());
                     }
                 }
             }

@@ -40,7 +40,6 @@ namespace CourseWork
             this.LabelPhoneNumber = new System.Windows.Forms.Label();
             this.InputFirstName = new System.Windows.Forms.TextBox();
             this.InputLastName = new System.Windows.Forms.TextBox();
-            this.InputAge = new System.Windows.Forms.TextBox();
             this.InputPassportNumber = new System.Windows.Forms.TextBox();
             this.InputPhoneNumber = new System.Windows.Forms.TextBox();
             this.CheckCreditOrDepositButton = new System.Windows.Forms.Button();
@@ -59,6 +58,7 @@ namespace CourseWork
             this.OutputFinalSum = new System.Windows.Forms.TextBox();
             this.LabelTerm = new System.Windows.Forms.Label();
             this.OutputTerm = new System.Windows.Forms.TextBox();
+            this.InputAge = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -179,15 +179,6 @@ namespace CourseWork
             this.InputLastName.Name = "InputLastName";
             this.InputLastName.Size = new System.Drawing.Size(265, 30);
             this.InputLastName.TabIndex = 28;
-            // 
-            // InputAge
-            // 
-            this.InputAge.BackColor = System.Drawing.Color.Cornsilk;
-            this.InputAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputAge.Location = new System.Drawing.Point(500, 382);
-            this.InputAge.Name = "InputAge";
-            this.InputAge.Size = new System.Drawing.Size(265, 30);
-            this.InputAge.TabIndex = 29;
             // 
             // InputPassportNumber
             // 
@@ -389,6 +380,15 @@ namespace CourseWork
             this.OutputTerm.Size = new System.Drawing.Size(185, 30);
             this.OutputTerm.TabIndex = 47;
             // 
+            // InputAge
+            // 
+            this.InputAge.BackColor = System.Drawing.Color.Cornsilk;
+            this.InputAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InputAge.Location = new System.Drawing.Point(500, 383);
+            this.InputAge.Name = "InputAge";
+            this.InputAge.Size = new System.Drawing.Size(265, 30);
+            this.InputAge.TabIndex = 48;
+            // 
             // CreditMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -396,6 +396,7 @@ namespace CourseWork
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.Controls.Add(this.InputAge);
             this.Controls.Add(this.OutputTerm);
             this.Controls.Add(this.LabelTerm);
             this.Controls.Add(this.OutputFinalSum);
@@ -414,7 +415,6 @@ namespace CourseWork
             this.Controls.Add(this.CheckCreditOrDepositButton);
             this.Controls.Add(this.InputPhoneNumber);
             this.Controls.Add(this.InputPassportNumber);
-            this.Controls.Add(this.InputAge);
             this.Controls.Add(this.InputLastName);
             this.Controls.Add(this.InputFirstName);
             this.Controls.Add(this.LabelPhoneNumber);
@@ -429,7 +429,6 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreditMenu";
             this.Load += new System.EventHandler(this.CreditMenu_Load);
-            this.FormClosing += this.CreditMenu_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,7 +446,6 @@ namespace CourseWork
         private System.Windows.Forms.Label LabelPhoneNumber;
         private System.Windows.Forms.TextBox InputFirstName;
         private System.Windows.Forms.TextBox InputLastName;
-        private System.Windows.Forms.TextBox InputAge;
         private System.Windows.Forms.TextBox InputPassportNumber;
         private System.Windows.Forms.TextBox InputPhoneNumber;
         private System.Windows.Forms.Button CheckCreditOrDepositButton;
@@ -460,11 +458,12 @@ namespace CourseWork
         private System.Windows.Forms.Label LabelInterestRate;
         private System.Windows.Forms.Label LabelMonthlyPayment;
         private System.Windows.Forms.Label LabelFinalSum;
-        private System.Windows.Forms.TextBox OutputSumOfCredit;
-        private System.Windows.Forms.TextBox OutputInterestRate;
-        private System.Windows.Forms.TextBox OutputMontlyPayment;
-        private System.Windows.Forms.TextBox OutputFinalSum;
         private System.Windows.Forms.Label LabelTerm;
-        private System.Windows.Forms.TextBox OutputTerm;
+        public System.Windows.Forms.TextBox OutputSumOfCredit;
+        public System.Windows.Forms.TextBox OutputInterestRate;
+        public System.Windows.Forms.TextBox OutputMontlyPayment;
+        public System.Windows.Forms.TextBox OutputFinalSum;
+        public System.Windows.Forms.TextBox OutputTerm;
+        private System.Windows.Forms.TextBox InputAge;
     }
 }

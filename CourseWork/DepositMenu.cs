@@ -16,7 +16,6 @@ namespace CourseWork
 
         private void DepositMenu_Load(object sender, EventArgs e)
         {
-            Output(LoadInformation());
         }
         private void DepositMenu_FormClosing(object sender, EventArgs e)
         {
@@ -27,15 +26,7 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
             if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Application.Exit();
-            }
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -44,12 +35,6 @@ namespace CourseWork
             var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
             if (result == DialogResult.Yes)
             {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Owner.Visible = true;
                 Visible = false;
             }
@@ -99,6 +84,11 @@ namespace CourseWork
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
                 return false;
             }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
+                return false;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -126,21 +116,7 @@ namespace CourseWork
         #endregion
 
         #region InfoAboutDeposits
-        private Deposit LoadInformation()
-        {
-            string path = @"../../../tempdeposit.txt";
-            string[] depositFields = File.ReadAllText(path).Split(' ');
-            Deposit deposit = new Deposit();
 
-            deposit.SumOfDeposit = Convert.ToDouble(depositFields[0]);
-            deposit.Term = Convert.ToInt32(depositFields[1]);
-            deposit.InterestRate = Convert.ToDouble(depositFields[2]);
-            deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
-
-            Output(deposit);
-
-            return deposit;
-        }
         private void Output(Deposit deposit)
         {
             OutputSumOfDeposit.Text = deposit.SumOfDeposit.ToString();
@@ -168,10 +144,11 @@ namespace CourseWork
                     return;
                 }
                 string path2 = @"../../../deposits.txt";
-
-                Deposit deposit = LoadInformation();
-                deposit.Owner = new Person(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
+                Person person = new Person(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
                     InputPassportNumber.Text, InputPhoneNumber.Text);
+                Deposit deposit = new Deposit(person, Convert.ToDouble(OutputSumOfDeposit.Text), Convert.ToInt32(OutputTerm.Text), 
+                    Convert.ToDouble(OutputInterestRate.Text), Convert.ToDouble(OutputFinalSum.Text));
+
                 deposit.ID = Guid.NewGuid();
 
                 string contents = deposit.ToString();
@@ -184,15 +161,7 @@ namespace CourseWork
                 if (result == DialogResult.Yes)
                     ConfirmDepositButton.Enabled = false;
                 else
-                {
-                    string path = @"../../../tempcredit.txt";
-                    string path0 = @"../../../tempdeposit.txt";
-                    if (File.Exists(path))
-                        File.Delete(path);
-                    if (File.Exists(path0))
-                        File.Delete(path0);
                     Application.Exit();
-                }
             }
         }
         private void GetConsultationButton_Click(object sender, EventArgs e)
@@ -231,7 +200,6 @@ namespace CourseWork
                     {
                         MessageBox.Show("У Вас немає кредиту чи депозиту в нашому банку.");
                         ConfirmDepositButton.Enabled = true;
-                        Output(LoadInformation());
                     }
                 }
             }

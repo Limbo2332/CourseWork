@@ -429,7 +429,6 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepositMenu";
             this.Load += new System.EventHandler(this.DepositMenu_Load);
-            this.FormClosing += this.DepositMenu_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,12 +439,7 @@ namespace CourseWork
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Label MainLabel;
-        private System.Windows.Forms.TextBox OutputTerm;
         private System.Windows.Forms.Label LabelTerm;
-        private System.Windows.Forms.TextBox OutputFinalSum;
-        private System.Windows.Forms.TextBox OutputMontlyPayment;
-        private System.Windows.Forms.TextBox OutputInterestRate;
-        private System.Windows.Forms.TextBox OutputSumOfDeposit;
         private System.Windows.Forms.Label LabelFinalSum;
         private System.Windows.Forms.Label LabelAverageMonthlyIncome;
         private System.Windows.Forms.Label LabelInterestRate;
@@ -466,5 +460,10 @@ namespace CourseWork
         private System.Windows.Forms.Label LabelAge;
         private System.Windows.Forms.Label LabelLastName;
         private System.Windows.Forms.Label LabelFirstName;
+        public System.Windows.Forms.TextBox OutputTerm;
+        public System.Windows.Forms.TextBox OutputFinalSum;
+        public System.Windows.Forms.TextBox OutputMontlyPayment;
+        public System.Windows.Forms.TextBox OutputInterestRate;
+        public System.Windows.Forms.TextBox OutputSumOfDeposit;
     }
 }

@@ -25,15 +25,7 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
             if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Application.Exit();
-            }
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -41,16 +33,8 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
             if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Owner.Visible = true;
                 Visible = false;
-            }
         }
 
         #region CreditCode
@@ -107,12 +91,14 @@ namespace CourseWork
                 if (CreditOutputPercent.Text == "0" || credit.SumOfCredit.ToString() != InputSumOfCredit.Text || credit.Term.ToString() !=
                     InputTermOfCredit.Text)
                     throw new Exception();
-                string path = @"../../../tempcredit.txt";
-                string contents = credit.SumOfCredit + " " + credit.Term + " " + credit.InterestRate;
-                File.AppendAllText(path, contents);
 
                 CreditMenu creditMenu = new CreditMenu();
                 creditMenu.Owner = this;
+                creditMenu.OutputSumOfCredit.Text = credit.SumOfCredit.ToString();
+                creditMenu.OutputInterestRate.Text = credit.InterestRate.ToString();
+                creditMenu.OutputMontlyPayment.Text = credit.MonthlyPayment().ToString();
+                creditMenu.OutputTerm.Text = credit.Term.ToString();
+                creditMenu.OutputFinalSum.Text = Bank.CountFinalSumOfCredit(credit).ToString();
                 creditMenu.Show();
                 Visible = false;
             }
@@ -164,6 +150,7 @@ namespace CourseWork
                 DepositOutputPercent.Text = interestRate.ToString();
 
                 deposit.InterestRate = interestRate;
+                deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
             }
             catch (Exception)
             {
@@ -181,10 +168,12 @@ namespace CourseWork
                 if (DepositOutputPercent.Text == "0" || deposit.SumOfDeposit.ToString() != InputSumOfDeposit.Text || 
                     deposit.Term.ToString() != InputTermOfDeposit.Text)
                     throw new Exception();
-                string path = @"../../../tempdeposit.txt";
-                string contents = deposit.SumOfDeposit + " " + deposit.Term + " " + deposit.InterestRate;
-                File.AppendAllText(path, contents);
                 DepositMenu depositMenu = new DepositMenu();
+                depositMenu.OutputSumOfDeposit.Text = deposit.SumOfDeposit.ToString();
+                depositMenu.OutputInterestRate.Text = deposit.InterestRate.ToString();
+                depositMenu.OutputTerm.Text = deposit.Term.ToString();
+                depositMenu.OutputFinalSum.Text = deposit.FinalSum.ToString();
+                depositMenu.OutputMontlyPayment.Text = deposit.AverageMontlyIncome().ToString();
                 depositMenu.Owner = this;
                 depositMenu.Show();
                 Visible = false;

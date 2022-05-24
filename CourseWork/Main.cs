@@ -45,15 +45,7 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви точно хочете завершити роботу програми?", "Завершення програми", buttons);
             if (result == DialogResult.Yes)
-            {
-                string path = @"../../../tempcredit.txt";
-                string path1 = @"../../../tempdeposit.txt";
-                if (File.Exists(path))
-                    File.Delete(path);
-                if (File.Exists(path1))
-                    File.Delete(path1);
                 Application.Exit();
-            }
         }
 
         #region Opening UserLogin form
