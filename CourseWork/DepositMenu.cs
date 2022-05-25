@@ -60,7 +60,7 @@ namespace CourseWork
 
                 // регулярні вирази
 
-                Regex Name = new Regex(@"[а-я]");
+                Regex Name = new Regex(@"\w");
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
