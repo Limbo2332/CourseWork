@@ -9,15 +9,16 @@ namespace CourseWork
 {
     public partial class ManagerLogin : Form
     {
-
         public ManagerLogin()
         {
-
             InitializeComponent();
+
             InputEmployeePosition.Items.AddRange(new string[] { Position.Касир.ToString(), Position.Аналітик.ToString(),
             Position.Експерт.ToString(), Position.Консультант.ToString()});
+
             AddChoise.Items.AddRange(new string[] { "Співробітника", "Кредит", "Депозит" });
             EditChoise.Items.AddRange(new string[] { "Інформацію про співробітника", "Інформацію про кредит", "Інформацію про депозит" });
+
             EditEmployeePosition.Items.AddRange(new string[] { Position.Касир.ToString(), Position.Аналітик.ToString(),
             Position.Експерт.ToString(), Position.Консультант.ToString()});
         }
@@ -92,7 +93,7 @@ namespace CourseWork
         #endregion
 
         #region Checking that the input is correct and availability of deposit/credit/employee
-        private bool CheckCorrectOrNot(TextBox inputFirstName, TextBox inputLastName, TextBox inputAge, TextBox inputPassport,
+        private bool CheckCorrectness(TextBox inputFirstName, TextBox inputLastName, TextBox inputAge, TextBox inputPassport,
     TextBox inputPhonenumber)
         {
             try
@@ -108,11 +109,14 @@ namespace CourseWork
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
+                const int AGE_OF_MAJORITY = 18;
+                const int RETIREMENT_AGE = 65;
+
                 if (firstName.Length < 2 || !Name.IsMatch(firstName))
                     throw new Exception("Ви ввели недопустиме значення для імені.");
                 else if (lastName.Length < 2 || !Name.IsMatch(lastName))
                     throw new Exception("Ви ввели недопустиме значення для прізвища.");
-                else if (age < 18 || age > 65)
+                else if (age < AGE_OF_MAJORITY || age > RETIREMENT_AGE)
                     throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");
                 else if (passportNumber.Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
                     throw new Exception("Номер паспорту повинен містити 9 цифр. Перевірте правильність вводу.");
@@ -123,44 +127,36 @@ namespace CourseWork
             catch (FormatException)
             {
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
-                return false;
             }
             catch (OverflowException)
             {
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
-                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
             }
+            return false;
         }
-        private bool HasDepositOrNot(TextBox inputPassportNumber, TextBox inputPhoneNumber)
+        private bool HasDeposit(TextBox inputPassportNumber, TextBox inputPhoneNumber)
         {
             foreach (var deposit in Bank.ListOfDeposits)
-            {
                 if (deposit.Owner.PassportNumber == inputPassportNumber.Text || deposit.Owner.PhoneNumber == inputPhoneNumber.Text)
                     return true;
-            }
             return false;
         }
-        private bool HasCreditOrNot(TextBox inputPassportNumber, TextBox inputPhoneNumber)
+        private bool HasCredit(TextBox inputPassportNumber, TextBox inputPhoneNumber)
         {
             foreach (var credit in Bank.ListOfCredits)
-            {
                 if (credit.Owner.PassportNumber == inputPassportNumber.Text || credit.Owner.PhoneNumber == inputPhoneNumber.Text)
                     return true;
-            }
             return false;
         }
-        private bool IsEmployeeOrNot(TextBox inputPassportNumber, TextBox inputPhoneNumber)
+        private bool IsEmployee(TextBox inputPassportNumber, TextBox inputPhoneNumber)
         {
             foreach (var employee in Bank.ListOfEmployees)
-            {
                 if (employee.PassportNumber == inputPassportNumber.Text || employee.PhoneNumber == inputPhoneNumber.Text)
                     return true;
-            }
             return false;
         }
         #endregion
@@ -168,26 +164,27 @@ namespace CourseWork
         #region Add credit/deposit/employee
         private void ConfirmAddButton_Click(object sender, EventArgs e)
         {
-            if (CheckCorrectOrNot(InputAddFirstName, InputAddLastName, InputAddAge, InputAddPassport, InputAddPhoneNumber))
+            if (CheckCorrectness(InputAddFirstName, InputAddLastName, InputAddAge, InputAddPassport, InputAddPhoneNumber))
             {
 
                 Person person = new Person(InputAddFirstName.Text, InputAddLastName.Text, Convert.ToInt32(InputAddAge.Text),
                     InputAddPassport.Text, InputAddPhoneNumber.Text);
-                if (HasCreditOrNot(InputAddPassport, InputAddPhoneNumber))
+                if (HasCredit(InputAddPassport, InputAddPhoneNumber))
                 {
                     MessageBox.Show("Ця людина вже має кредит в нашому банку! Ми не можемо взяти її на роботу!");
                     return;
                 }
-                if (HasDepositOrNot(InputAddPassport, InputAddPhoneNumber))
+                if (HasDeposit(InputAddPassport, InputAddPhoneNumber))
                 {
                     MessageBox.Show("Ця людина вже має депозит в нашому банку! Ми не можемо взяти її на роботу!");
                     return;
                 }
-                if (IsEmployeeOrNot(InputAddPassport, InputAddPhoneNumber))
+                if (IsEmployee(InputAddPassport, InputAddPhoneNumber))
                 {
                     MessageBox.Show("Ця людина вже працює в нашому банку! Ми не можемо взяти її на роботу!");
                     return;
                 }
+
                 if ((string)AddChoise.SelectedItem == "Співробітника")
                 {
                     Employee employee = new Employee(person.FirstName, person.LastName, person.Age, person.PassportNumber, person.PhoneNumber);
@@ -212,8 +209,10 @@ namespace CourseWork
                     }
                     string path = @"../../../employees.txt";
                     string contents = employee.ToString();
+
                     File.AppendAllText(path, contents);
                     Bank.ListOfEmployees.Add(employee);
+
                     MessageBox.Show("Робітник успішно взятий на роботу!");
                 }
                 else if ((string)AddChoise.SelectedItem == "Кредит")
@@ -232,10 +231,12 @@ namespace CourseWork
                         return;
                     }
 
-                    string path = @"../../../credits.txt";
                     credit.ID = Guid.NewGuid();
                     credit.Owner = person;
+
+                    string path = @"../../../credits.txt";
                     string contents = credit.ToString();
+
                     File.AppendAllText(path, contents);
                     Bank.ListOfCredits.Add(credit);
 
@@ -256,11 +257,13 @@ namespace CourseWork
                         MessageBox.Show("Ви ввели недопустиме значення полей!(Інформація про депозит)");
                         return;
                     }
-                    string path2 = @"../../../deposits.txt";
                     deposit.ID = Guid.NewGuid();
                     deposit.Owner = person;
+
+                    string path = @"../../../deposits.txt";
                     string contents = deposit.ToString();
-                    File.AppendAllText(path2, contents);
+
+                    File.AppendAllText(path, contents);
                     Bank.ListOfDeposits.Add(deposit);
 
                     MessageBox.Show("Ви успішно отримали депозит в нашому банку!");
@@ -270,8 +273,6 @@ namespace CourseWork
                     MessageBox.Show("Ви не обрали, кого добавити!");
                     return;
                 }
-
-
             }
 
         }
@@ -338,6 +339,7 @@ namespace CourseWork
 
             Regex ForPassportNumber = new Regex(@"^\d{9}$");
             Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
+
             try
             {
                 if (passportNumber.Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
@@ -435,9 +437,14 @@ namespace CourseWork
         #region Edit Info about credit/deposit/employee
         private bool EditPersonValues(ref Person person)
         {
+            EditEmployeePosition.Visible = false;
+
             Regex Name = new Regex(@"[а-я]");
             Regex ForPassportNumber = new Regex(@"^\d{9}$");
             Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
+
+            const int AGE_OF_MAJORITY = 18;
+            const int RETIREMENT_AGE = 65;
 
             if ((string)EditChoiseParameter.SelectedItem == "Ім'я")
             {
@@ -452,7 +459,6 @@ namespace CourseWork
                     MessageBox.Show("Перевірте правильність вводу імені!");
                     return false;
                 }
-
             }
             else if ((string)EditChoiseParameter.SelectedItem == "Прізвище")
             {
@@ -467,14 +473,13 @@ namespace CourseWork
                     MessageBox.Show("Перевірте правильність вводу прізвища!");
                     return false;
                 }
-
             }
             else if ((string)EditChoiseParameter.SelectedItem == "Вік")
             {
                 try
                 {
                     int age = Convert.ToInt32(InputEditParameter.Text);
-                    if (age < 18 || age > 65)
+                    if (age < AGE_OF_MAJORITY || age > RETIREMENT_AGE)
                         throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");
                     person.Age = age;
                     MessageBox.Show("Вік успішно змінено!");
@@ -500,22 +505,20 @@ namespace CourseWork
                 {
                     string passportNumber = InputEditPassport.Text;
                     foreach (var credit in Bank.ListOfCredits)
-                    {
                         if (credit.Owner.PassportNumber == passportNumber)
                             throw new Exception("Користувач з цим номером паспорту вже має кредит! Операцію відмінено!");
-                    }
+
                     foreach (var deposit in Bank.ListOfDeposits)
-                    {
                         if (deposit.Owner.PassportNumber == passportNumber)
                             throw new Exception("Користувач з цим номером паспорту вже має депозит! Операцію відмінено!");
-                    }
+
                     foreach (var employee in Bank.ListOfEmployees)
-                    {
                         if (employee.PassportNumber == passportNumber)
                             throw new Exception("Користувач з цим номером паспорту вже працює в нашому банку! Операцію відмінено!");
-                    }
+
                     if (passportNumber.Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
                         throw new Exception("Номер паспорту повинен містити 9 цифр. Перевірте правильність вводу.");
+
                     person.PassportNumber = passportNumber;
                     MessageBox.Show("Номер паспорту успішно змінено!");
                     return true;
@@ -532,22 +535,20 @@ namespace CourseWork
                 {
                     string phoneNumber = InputEditParameter.Text;
                     foreach (var credit in Bank.ListOfCredits)
-                    {
                         if (credit.Owner.PhoneNumber == phoneNumber)
                             throw new Exception("Користувач з цим номером телефону вже має кредит! Операцію відмінено!");
-                    }
+
                     foreach (var deposit in Bank.ListOfDeposits)
-                    {
                         if (deposit.Owner.PhoneNumber == phoneNumber)
                             throw new Exception("Користувач з цим номером телефону вже має депозит! Операцію відмінено!");
-                    }
+
                     foreach (var employee in Bank.ListOfEmployees)
-                    {
                         if (employee.PhoneNumber == phoneNumber)
                             throw new Exception("Користувач з цим номером телефону вже працює в нашому банку! Операцію відмінено!");
-                    }
+
                     if (!ForPhoneNumber.IsMatch(phoneNumber))
                         throw new Exception("Перевірте правильність вводу мобільного телефону.");
+
                     person.PhoneNumber = phoneNumber;
                     MessageBox.Show("Номер телефону успішно змінено!");
                     return true;
@@ -563,6 +564,8 @@ namespace CourseWork
 
         private void EditChoise_SelectedIndexChanged(object sender, EventArgs e)
         {
+            EditEmployeePosition.Visible = false;
+
             LabelEditChoise.Visible = true;
             EditChoiseParameter.Visible = true;
             LabelEditInfo.Visible = true;
@@ -570,31 +573,31 @@ namespace CourseWork
             LabelEditPhone.Visible = true;
             InputEditPassport.Visible = true;
             InputEditPhone.Visible = true;
+
+            EditChoiseParameter.Items.Clear();
+
             if ((string)EditChoise.SelectedItem == "Інформацію про співробітника")
-            {
-                EditChoiseParameter.Items.Clear();
                 EditChoiseParameter.Items.AddRange(new string[]{"Ім'я", "Прізвище", "Вік", "Номер паспорту", "Номер телефону",
                 "Посаду в банку", "Досвід роботи", "Зарплату" });
-            }
+
             else if ((string)EditChoise.SelectedItem == "Інформацію про кредит")
-            {
-                EditChoiseParameter.Items.Clear();
                 EditChoiseParameter.Items.AddRange(new string[]{"Ім'я", "Прізвище", "Вік", "Номер паспорту", "Номер телефону",
                 "Суму кредиту", "Термін", "Процент по кредиту", "Суму до виплати" });
-            }
+
             else if ((string)EditChoise.SelectedItem == "Інформацію про депозит")
-            {
-                EditChoiseParameter.Items.Clear();
                 EditChoiseParameter.Items.AddRange(new string[]{"Ім'я", "Прізвище", "Вік", "Номер паспорту", "Номер телефону",
                 "Суму депозиту", "Термін", "Процент по депозиту", "Суму виплати" });
-            }
+
         }
 
         private void EditChoiseParameter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            EditEmployeePosition.Visible = false;
+
             LabelEditParameter.Visible = true;
             InputEditParameter.Visible = true;
             EditConfirmButton.Visible = true;
+
             if ((string)EditChoiseParameter.SelectedItem == "Ім'я")
                 LabelEditParameter.Text = "Нове значення для імені:";
             else if ((string)EditChoiseParameter.SelectedItem == "Прізвище")
@@ -657,6 +660,7 @@ namespace CourseWork
 
             Regex ForPassportNumber = new Regex(@"^\d{9}$");
             Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
+
             try
             {
                 if (passportNumber.Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
@@ -687,9 +691,10 @@ namespace CourseWork
                     else if (credit.Owner.PassportNumber == passportNumber && credit.Owner.PhoneNumber == phoneNumber)
                     {
                         hasCredit = true;
+
                         Person person = credit.Owner;
-                        bool res = EditPersonValues(ref person);
-                        if (res)
+
+                        if (EditPersonValues(ref person))
                         {
                             credit.Owner = person;
                             return;
@@ -698,8 +703,11 @@ namespace CourseWork
                         {
                             try
                             {
+                                const double MIN_SUM_OF_CREDIT = 10000;
+                                const double MAX_SUM_OF_CREDIT = 1000000;
+
                                 double sumOfCredit = Convert.ToDouble(InputEditParameter.Text);
-                                if (sumOfCredit < 10000 || sumOfCredit > 1000000)
+                                if (sumOfCredit < MIN_SUM_OF_CREDIT || sumOfCredit > MAX_SUM_OF_CREDIT)
                                     throw (new Exception("Сума кредиту не може бути більшою, " +
                                     "ніж 1 мільйон гривень, або меншою, ніж 10000 грн"));
                                 credit.SumOfCredit = sumOfCredit;
@@ -710,12 +718,10 @@ namespace CourseWork
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -724,24 +730,27 @@ namespace CourseWork
                         {
                             try
                             {
+                                const int MAX_TERM_CREDIT = 120;
+                                
                                 int term = Convert.ToInt32(InputEditParameter.Text);
-                                if (term <= 0 || term > 120)
+
+                                if (term <= 0 || term > MAX_TERM_CREDIT)
                                     throw (new Exception("Термін кредиту не може бути більшим, ніж 10 років!"));
+
                                 credit.Term = term;
                                 credit.InterestRate = Bank.CountCreditProcent(credit);
                                 credit.FinalSum = Bank.CountFinalSumOfCredit(credit);
+
                                 MessageBox.Show("Термін успішно змінена! Попередження: оскільки Ви змінили термін, то і інші " +
                                     "характеристики автоматично змінені!");
                             }
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -750,9 +759,13 @@ namespace CourseWork
                         {
                             try
                             {
+                                const double MAX_INTERESTRATE_FOR_CREDIT = 10;
+
                                 double interestRate = Convert.ToDouble(InputEditParameter.Text);
-                                if (interestRate <= 0 || interestRate > 10)
+
+                                if (interestRate <= 0 || interestRate > MAX_INTERESTRATE_FOR_CREDIT)
                                     throw (new Exception("Процент по кредиту не може бути більшим, ніж 10%!"));
+
                                 credit.InterestRate = interestRate;
                                 credit.FinalSum = Bank.CountFinalSumOfCredit(credit);
                                 MessageBox.Show("Процент по кредиту успішно змінено! Попередження: оскільки Ви змінили процент, то і інші " +
@@ -761,12 +774,10 @@ namespace CourseWork
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -775,25 +786,30 @@ namespace CourseWork
                         {
                             try
                             {
+                                const double MIN_SUM_OF_CREDIT = 10000;
+                                const double MAX_SUM_OF_CREDIT = 1000000;
+
                                 double finalSum = Convert.ToDouble(InputEditParameter.Text);
-                                if (finalSum <= 10001 || finalSum > 1100000)
-                                    throw (new Exception("Сума до виплати не може бути більшою, за 1,1 млн гривень і меншою за 10001 гривню!"));
+                                if (finalSum <= MIN_SUM_OF_CREDIT + 1 || finalSum > MAX_SUM_OF_CREDIT * 1.1)
+                                    throw (new Exception("Сума до виплати не може бути більшою, за 1,1 млн гривень " +
+                                        "і меншою за 10001 гривню!"));
+
                                 credit.FinalSum = finalSum;
+
                                 double p = credit.InterestRate / 1200;
                                 double help = p + p / (Math.Pow(1 + p, credit.Term) - 1);
                                 credit.SumOfCredit = Math.Round(finalSum / (double)(help * credit.Term), 2);
+
                                 MessageBox.Show("Сума до виплати успішно змінено! Попередження: оскільки Ви змінили суму до виплати, то і інші " +
                                     "характеристики автоматично змінені!");
                             }
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -822,8 +838,8 @@ namespace CourseWork
                     {
                         hasDeposit = true;
                         Person person = deposit.Owner;
-                        bool res = EditPersonValues(ref person);
-                        if (res)
+
+                        if (EditPersonValues(ref person))
                         {
                             deposit.Owner = person;
                             return;
@@ -833,24 +849,27 @@ namespace CourseWork
                         {
                             try
                             {
+                                const double MIN_SUM_OF_DEPOSIT = 1000;
+                                const double MAX_SUM_OF_DEPOSIT = 1000000;
+
                                 double sumOfDeposit = Convert.ToDouble(InputEditParameter.Text);
-                                if (sumOfDeposit < 1000 || sumOfDeposit > 1000000)
+                                if (sumOfDeposit < MIN_SUM_OF_DEPOSIT || sumOfDeposit > MAX_SUM_OF_DEPOSIT)
                                     throw (new Exception("Сума депозиту не може бути більшою, " +
                                     "ніж 1 мільйон гривень, або меншою, ніж 1000 грн"));
+
                                 deposit.SumOfDeposit = sumOfDeposit;
                                 deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
-                                MessageBox.Show("Сума депозиту успішно змінена! Попередження: оскільки Ви змінили суму депозиту, то і інші " +
-                                    "характеристики автоматично змінені!");
+
+                                MessageBox.Show("Сума депозиту успішно змінена! Попередження: оскільки Ви змінили суму депозиту, " +
+                                    "то і інші характеристики автоматично змінені!");
                             }
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -859,8 +878,10 @@ namespace CourseWork
                         {
                             try
                             {
+                                const int MAX_TERM_DEPOSIT = 60;
+
                                 int term = Convert.ToInt32(InputEditParameter.Text);
-                                if (term <= 0 || term > 60)
+                                if (term <= 0 || term > MAX_TERM_DEPOSIT)
                                     throw (new Exception("Термін депозиту не може бути більшим, ніж 5 років!"));
                                 deposit.Term = term;
 
@@ -871,12 +892,10 @@ namespace CourseWork
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -885,34 +904,41 @@ namespace CourseWork
                         {
                             try
                             {
+                                const double MAX_INTEREST_RATE_FOR_DEPOSIT = 5;
+
                                 double interestRate = Convert.ToDouble(InputEditParameter.Text);
-                                if (interestRate <= 0 || interestRate > 5)
+                                if (interestRate <= 0 || interestRate > MAX_INTEREST_RATE_FOR_DEPOSIT)
                                     throw (new Exception("Процент по депозиту не може бути більшим, ніж 5%!"));
+
                                 deposit.InterestRate = interestRate;
                                 deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
+
                                 MessageBox.Show("Процент по депозиту успішно змінено! Попередження: оскільки Ви змінили процент, то і інші " +
                                     "характеристики автоматично змінені!");
                             }
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
                         }
                         else if ((string)EditChoiseParameter.SelectedItem == "Суму виплати")
                         {
+
+                            const double MIN_SUM_OF_DEPOSIT = 1000;
+                            const double MAX_SUM_OF_DEPOSIT = 1000000;
+
                             try
                             {
                                 double finalSum = Convert.ToDouble(InputEditParameter.Text);
-                                if (finalSum <= 1001 || finalSum > 1050000)
-                                    throw (new Exception("Сума до виплати не може бути більшою, за 1,1 млн гривень і меншою за 10001 гривню!"));
+                                if (finalSum <= MIN_SUM_OF_DEPOSIT + 1 || finalSum > MAX_SUM_OF_DEPOSIT * 1.05)
+                                    throw (new Exception("Сума до виплати не може бути більшою, за 1,05 млн гривень і " +
+                                        "меншою за 10001 гривню!"));
                                 deposit.FinalSum = finalSum;
                                 deposit.InterestRate = Bank.CountDepositProcent(deposit);
                                 deposit.SumOfDeposit = Math.Round(finalSum / Math.Pow(1 + deposit.InterestRate / 100, deposit.Term / 12), 2);
@@ -922,12 +948,10 @@ namespace CourseWork
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -956,6 +980,7 @@ namespace CourseWork
                     {
                         isEmployee = true;
                         Person person = employee;
+
                         if (EditPersonValues(ref person))
                         {
                             employee.FirstName = person.FirstName;
@@ -979,7 +1004,6 @@ namespace CourseWork
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -995,31 +1019,31 @@ namespace CourseWork
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
                         }
                         else if ((string)EditChoiseParameter.SelectedItem == "Зарплату")
                         {
+                            const double MIN_SALARY = 6500;
+                            const double MAX_SALARY = 100000;
+
                             try
                             {
                                 double salary = Convert.ToDouble(InputEditParameter.Text);
-                                if (salary < 6500 || salary > 100000)
+                                if (salary < MIN_SALARY || salary > MAX_SALARY)
                                     throw new Exception("Зарплата не може бути більшою, ніж 100 тисяч грн і меншою, ніж 6500 грн.");
+
                                 employee.Salary = salary;
                                 MessageBox.Show("Зарплату співробітника успішно змінено!");
-
                             }
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
-                                return;
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
-                                return;
                             }
                             Manager.UpdateLists();
                             return;
@@ -1040,6 +1064,7 @@ namespace CourseWork
             if ((string)ListBoxInfoChoise.SelectedItem == "Кредити")
             {
                 DataTable credits = new DataTable();
+
                 credits.Columns.Add("Ім'я");
                 credits.Columns.Add("Прізвище");
                 credits.Columns.Add("Вік", typeof(int));
@@ -1059,6 +1084,7 @@ namespace CourseWork
             else if ((string)ListBoxInfoChoise.SelectedItem == "Депозити")
             {
                 DataTable deposits = new DataTable();
+
                 deposits.Columns.Add("Ім'я");
                 deposits.Columns.Add("Прізвище");
                 deposits.Columns.Add("Вік", typeof(int));
@@ -1078,6 +1104,7 @@ namespace CourseWork
             else if ((string)ListBoxInfoChoise.SelectedItem == "Співробітники")
             {
                 DataTable employees = new DataTable();
+
                 employees.Columns.Add("Ім'я");
                 employees.Columns.Add("Прізвище");
                 employees.Columns.Add("Вік", typeof(int));
@@ -1097,6 +1124,7 @@ namespace CourseWork
             {
                 DataTable countOfClients = new DataTable();
                 Manager manager = new Manager();
+
                 countOfClients.Columns.Add("Кількість клієнтів", typeof(int));
                 countOfClients.Columns.Add("Середній вік клієнтів", typeof(double));
                 countOfClients.Columns.Add("Середня сума кредиту", typeof(double));
@@ -1112,6 +1140,7 @@ namespace CourseWork
             else if ((string)ListBoxInfoChoise.SelectedItem == "Загальна виручка")
             {
                 DataTable income = new DataTable();
+
                 income.Columns.Add("Загальна сума взятих кредитів", typeof(double));
                 income.Columns.Add("Загальна сума взятих депозитів", typeof(double));
                 income.Columns.Add("Прибуток банку", typeof(double));

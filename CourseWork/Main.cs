@@ -32,14 +32,11 @@ namespace CourseWork
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
-
         }
         private void Main_FormClosing(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;

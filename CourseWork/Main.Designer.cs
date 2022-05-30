@@ -37,7 +37,8 @@ namespace CourseWork
             // 
             // UserLogin
             // 
-            this.UserLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.UserLogin.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.UserLogin.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserLogin.Location = new System.Drawing.Point(287, 443);
             this.UserLogin.Name = "UserLogin";
             this.UserLogin.Size = new System.Drawing.Size(328, 88);
@@ -48,7 +49,8 @@ namespace CourseWork
             // 
             // ManagerLogin
             // 
-            this.ManagerLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ManagerLogin.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.ManagerLogin.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ManagerLogin.Location = new System.Drawing.Point(847, 446);
             this.ManagerLogin.Name = "ManagerLogin";
             this.ManagerLogin.Size = new System.Drawing.Size(335, 85);
@@ -61,11 +63,11 @@ namespace CourseWork
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Info;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(534, 171);
+            this.label1.Location = new System.Drawing.Point(497, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(410, 50);
+            this.label1.Size = new System.Drawing.Size(474, 58);
             this.label1.TabIndex = 2;
             this.label1.Text = "Вітаємо Вас у нашому банку, користуваче. \r\nНатисніть на одну з кнопок нижче.\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,7 +101,6 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
-            this.FormClosing += this.Main_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

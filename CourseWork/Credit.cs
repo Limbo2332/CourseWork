@@ -41,6 +41,7 @@ namespace CourseWork
         }
         public int Term { get; set; }
         public Person Owner { get; set; }
+
         /// <summary>
         /// Розраховує щомісячний платіж
         /// </summary>

@@ -67,7 +67,7 @@ namespace CourseWork
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CloseButton.Location = new System.Drawing.Point(1271, 94);
+            this.CloseButton.Location = new System.Drawing.Point(1251, 76);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(52, 50);
             this.CloseButton.TabIndex = 19;
@@ -82,7 +82,7 @@ namespace CourseWork
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BackButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackButton.Image = ((System.Drawing.Image)(resources.GetObject("BackButton.Image")));
-            this.BackButton.Location = new System.Drawing.Point(1186, 94);
+            this.BackButton.Location = new System.Drawing.Point(1176, 76);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(52, 50);
             this.BackButton.TabIndex = 21;
@@ -93,10 +93,10 @@ namespace CourseWork
             // 
             this.MainLabel.AutoSize = true;
             this.MainLabel.BackColor = System.Drawing.SystemColors.Info;
-            this.MainLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainLabel.Location = new System.Drawing.Point(569, 106);
+            this.MainLabel.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MainLabel.Location = new System.Drawing.Point(541, 39);
             this.MainLabel.Name = "MainLabel";
-            this.MainLabel.Size = new System.Drawing.Size(360, 75);
+            this.MainLabel.Size = new System.Drawing.Size(428, 87);
             this.MainLabel.TabIndex = 22;
             this.MainLabel.Text = "Заповніть усі необхідні для банку дані\r\nдля того, щоб отримати депозит\r\nв нашому " +
     "банку.\r\n";
@@ -107,7 +107,7 @@ namespace CourseWork
             this.OutputTerm.BackColor = System.Drawing.Color.Cornsilk;
             this.OutputTerm.Enabled = false;
             this.OutputTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OutputTerm.Location = new System.Drawing.Point(1043, 439);
+            this.OutputTerm.Location = new System.Drawing.Point(1028, 409);
             this.OutputTerm.Name = "OutputTerm";
             this.OutputTerm.Size = new System.Drawing.Size(185, 30);
             this.OutputTerm.TabIndex = 73;
@@ -116,10 +116,10 @@ namespace CourseWork
             // 
             this.LabelTerm.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelTerm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelTerm.Location = new System.Drawing.Point(811, 421);
+            this.LabelTerm.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelTerm.Location = new System.Drawing.Point(786, 399);
             this.LabelTerm.Name = "LabelTerm";
-            this.LabelTerm.Size = new System.Drawing.Size(200, 48);
+            this.LabelTerm.Size = new System.Drawing.Size(225, 48);
             this.LabelTerm.TabIndex = 72;
             this.LabelTerm.Text = "Термін(місяців)";
             this.LabelTerm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -129,7 +129,7 @@ namespace CourseWork
             this.OutputFinalSum.BackColor = System.Drawing.Color.Cornsilk;
             this.OutputFinalSum.Enabled = false;
             this.OutputFinalSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OutputFinalSum.Location = new System.Drawing.Point(1043, 594);
+            this.OutputFinalSum.Location = new System.Drawing.Point(1028, 586);
             this.OutputFinalSum.Name = "OutputFinalSum";
             this.OutputFinalSum.Size = new System.Drawing.Size(185, 30);
             this.OutputFinalSum.TabIndex = 71;
@@ -139,7 +139,7 @@ namespace CourseWork
             this.OutputMontlyPayment.BackColor = System.Drawing.Color.Cornsilk;
             this.OutputMontlyPayment.Enabled = false;
             this.OutputMontlyPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OutputMontlyPayment.Location = new System.Drawing.Point(1043, 511);
+            this.OutputMontlyPayment.Location = new System.Drawing.Point(1028, 497);
             this.OutputMontlyPayment.Name = "OutputMontlyPayment";
             this.OutputMontlyPayment.Size = new System.Drawing.Size(185, 30);
             this.OutputMontlyPayment.TabIndex = 70;
@@ -149,7 +149,7 @@ namespace CourseWork
             this.OutputInterestRate.BackColor = System.Drawing.Color.Cornsilk;
             this.OutputInterestRate.Enabled = false;
             this.OutputInterestRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OutputInterestRate.Location = new System.Drawing.Point(1043, 368);
+            this.OutputInterestRate.Location = new System.Drawing.Point(1028, 334);
             this.OutputInterestRate.Name = "OutputInterestRate";
             this.OutputInterestRate.Size = new System.Drawing.Size(185, 30);
             this.OutputInterestRate.TabIndex = 69;
@@ -159,7 +159,7 @@ namespace CourseWork
             this.OutputSumOfDeposit.BackColor = System.Drawing.Color.Cornsilk;
             this.OutputSumOfDeposit.Enabled = false;
             this.OutputSumOfDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OutputSumOfDeposit.Location = new System.Drawing.Point(1043, 290);
+            this.OutputSumOfDeposit.Location = new System.Drawing.Point(1028, 250);
             this.OutputSumOfDeposit.Name = "OutputSumOfDeposit";
             this.OutputSumOfDeposit.Size = new System.Drawing.Size(185, 30);
             this.OutputSumOfDeposit.TabIndex = 68;
@@ -168,10 +168,10 @@ namespace CourseWork
             // 
             this.LabelFinalSum.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelFinalSum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelFinalSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelFinalSum.Location = new System.Drawing.Point(811, 582);
+            this.LabelFinalSum.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelFinalSum.Location = new System.Drawing.Point(786, 569);
             this.LabelFinalSum.Name = "LabelFinalSum";
-            this.LabelFinalSum.Size = new System.Drawing.Size(200, 55);
+            this.LabelFinalSum.Size = new System.Drawing.Size(225, 63);
             this.LabelFinalSum.TabIndex = 67;
             this.LabelFinalSum.Text = "Сума виплати:";
             this.LabelFinalSum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,10 +180,10 @@ namespace CourseWork
             // 
             this.LabelAverageMonthlyIncome.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelAverageMonthlyIncome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelAverageMonthlyIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelAverageMonthlyIncome.Location = new System.Drawing.Point(811, 487);
+            this.LabelAverageMonthlyIncome.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelAverageMonthlyIncome.Location = new System.Drawing.Point(786, 462);
             this.LabelAverageMonthlyIncome.Name = "LabelAverageMonthlyIncome";
-            this.LabelAverageMonthlyIncome.Size = new System.Drawing.Size(200, 79);
+            this.LabelAverageMonthlyIncome.Size = new System.Drawing.Size(225, 98);
             this.LabelAverageMonthlyIncome.TabIndex = 66;
             this.LabelAverageMonthlyIncome.Text = "Середній місячний\r\nдохід:";
             this.LabelAverageMonthlyIncome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,10 +192,10 @@ namespace CourseWork
             // 
             this.LabelInterestRate.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelInterestRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelInterestRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelInterestRate.Location = new System.Drawing.Point(811, 356);
+            this.LabelInterestRate.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInterestRate.Location = new System.Drawing.Point(786, 316);
             this.LabelInterestRate.Name = "LabelInterestRate";
-            this.LabelInterestRate.Size = new System.Drawing.Size(200, 55);
+            this.LabelInterestRate.Size = new System.Drawing.Size(225, 64);
             this.LabelInterestRate.TabIndex = 65;
             this.LabelInterestRate.Text = "Відсоток по депозиту:";
             this.LabelInterestRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -204,19 +204,19 @@ namespace CourseWork
             // 
             this.LabelSumOfDeposit.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelSumOfDeposit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelSumOfDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelSumOfDeposit.Location = new System.Drawing.Point(811, 279);
+            this.LabelSumOfDeposit.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelSumOfDeposit.Location = new System.Drawing.Point(786, 234);
             this.LabelSumOfDeposit.Name = "LabelSumOfDeposit";
-            this.LabelSumOfDeposit.Size = new System.Drawing.Size(200, 51);
+            this.LabelSumOfDeposit.Size = new System.Drawing.Size(225, 61);
             this.LabelSumOfDeposit.TabIndex = 64;
             this.LabelSumOfDeposit.Text = "Сума вкладу:";
             this.LabelSumOfDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LabelInfoDeposit
             // 
-            this.LabelInfoDeposit.BackColor = System.Drawing.SystemColors.Info;
-            this.LabelInfoDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelInfoDeposit.Location = new System.Drawing.Point(888, 195);
+            this.LabelInfoDeposit.BackColor = System.Drawing.Color.Moccasin;
+            this.LabelInfoDeposit.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInfoDeposit.Location = new System.Drawing.Point(829, 142);
             this.LabelInfoDeposit.Name = "LabelInfoDeposit";
             this.LabelInfoDeposit.Size = new System.Drawing.Size(350, 59);
             this.LabelInfoDeposit.TabIndex = 63;
@@ -227,10 +227,10 @@ namespace CourseWork
             // 
             this.TermsLabel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.TermsLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TermsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TermsLabel.Location = new System.Drawing.Point(450, 594);
+            this.TermsLabel.Font = new System.Drawing.Font("Sitka Small", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TermsLabel.Location = new System.Drawing.Point(429, 606);
             this.TermsLabel.Name = "TermsLabel";
-            this.TermsLabel.Size = new System.Drawing.Size(333, 28);
+            this.TermsLabel.Size = new System.Drawing.Size(316, 28);
             this.TermsLabel.TabIndex = 62;
             this.TermsLabel.TabStop = true;
             this.TermsLabel.Text = "умовами отримання депозиту";
@@ -239,21 +239,21 @@ namespace CourseWork
             // TermsCheckBox
             // 
             this.TermsCheckBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.TermsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TermsCheckBox.Location = new System.Drawing.Point(265, 595);
+            this.TermsCheckBox.Font = new System.Drawing.Font("Sitka Small", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TermsCheckBox.Location = new System.Drawing.Point(233, 595);
             this.TermsCheckBox.Name = "TermsCheckBox";
-            this.TermsCheckBox.Size = new System.Drawing.Size(518, 30);
+            this.TermsCheckBox.Size = new System.Drawing.Size(547, 50);
             this.TermsCheckBox.TabIndex = 61;
             this.TermsCheckBox.Text = "Я погоджуюсь з\r\n";
             this.TermsCheckBox.UseVisualStyleBackColor = false;
             // 
             // GetConsultationButton
             // 
-            this.GetConsultationButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.GetConsultationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GetConsultationButton.BackColor = System.Drawing.Color.Chartreuse;
+            this.GetConsultationButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GetConsultationButton.Location = new System.Drawing.Point(941, 674);
             this.GetConsultationButton.Name = "GetConsultationButton";
-            this.GetConsultationButton.Size = new System.Drawing.Size(287, 78);
+            this.GetConsultationButton.Size = new System.Drawing.Size(287, 102);
             this.GetConsultationButton.TabIndex = 60;
             this.GetConsultationButton.Text = "Отримати консультацію спеціаліста";
             this.GetConsultationButton.UseVisualStyleBackColor = false;
@@ -261,11 +261,11 @@ namespace CourseWork
             // 
             // ConfirmDepositButton
             // 
-            this.ConfirmDepositButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ConfirmDepositButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConfirmDepositButton.BackColor = System.Drawing.Color.Chartreuse;
+            this.ConfirmDepositButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ConfirmDepositButton.Location = new System.Drawing.Point(578, 674);
             this.ConfirmDepositButton.Name = "ConfirmDepositButton";
-            this.ConfirmDepositButton.Size = new System.Drawing.Size(287, 78);
+            this.ConfirmDepositButton.Size = new System.Drawing.Size(287, 102);
             this.ConfirmDepositButton.TabIndex = 59;
             this.ConfirmDepositButton.Text = "Підтвердити отримання депозиту\r\n";
             this.ConfirmDepositButton.UseVisualStyleBackColor = false;
@@ -273,11 +273,11 @@ namespace CourseWork
             // 
             // CheckCreditOrDepositButton
             // 
-            this.CheckCreditOrDepositButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CheckCreditOrDepositButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckCreditOrDepositButton.BackColor = System.Drawing.Color.Chartreuse;
+            this.CheckCreditOrDepositButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckCreditOrDepositButton.Location = new System.Drawing.Point(217, 674);
             this.CheckCreditOrDepositButton.Name = "CheckCreditOrDepositButton";
-            this.CheckCreditOrDepositButton.Size = new System.Drawing.Size(287, 78);
+            this.CheckCreditOrDepositButton.Size = new System.Drawing.Size(287, 102);
             this.CheckCreditOrDepositButton.TabIndex = 58;
             this.CheckCreditOrDepositButton.Text = "Переглянути наявність кредиту чи депозиту\r\n";
             this.CheckCreditOrDepositButton.UseVisualStyleBackColor = false;
@@ -287,7 +287,7 @@ namespace CourseWork
             // 
             this.InputPhoneNumber.BackColor = System.Drawing.Color.Cornsilk;
             this.InputPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputPhoneNumber.Location = new System.Drawing.Point(471, 524);
+            this.InputPhoneNumber.Location = new System.Drawing.Point(471, 530);
             this.InputPhoneNumber.Name = "InputPhoneNumber";
             this.InputPhoneNumber.Size = new System.Drawing.Size(265, 30);
             this.InputPhoneNumber.TabIndex = 57;
@@ -306,7 +306,7 @@ namespace CourseWork
             // 
             this.InputAge.BackColor = System.Drawing.Color.Cornsilk;
             this.InputAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputAge.Location = new System.Drawing.Point(471, 356);
+            this.InputAge.Location = new System.Drawing.Point(471, 350);
             this.InputAge.Name = "InputAge";
             this.InputAge.Size = new System.Drawing.Size(265, 30);
             this.InputAge.TabIndex = 55;
@@ -315,7 +315,7 @@ namespace CourseWork
             // 
             this.InputLastName.BackColor = System.Drawing.Color.Cornsilk;
             this.InputLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputLastName.Location = new System.Drawing.Point(471, 291);
+            this.InputLastName.Location = new System.Drawing.Point(471, 280);
             this.InputLastName.Name = "InputLastName";
             this.InputLastName.Size = new System.Drawing.Size(265, 30);
             this.InputLastName.TabIndex = 54;
@@ -324,7 +324,7 @@ namespace CourseWork
             // 
             this.InputFirstName.BackColor = System.Drawing.Color.Cornsilk;
             this.InputFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputFirstName.Location = new System.Drawing.Point(471, 224);
+            this.InputFirstName.Location = new System.Drawing.Point(471, 203);
             this.InputFirstName.Name = "InputFirstName";
             this.InputFirstName.Size = new System.Drawing.Size(265, 30);
             this.InputFirstName.TabIndex = 53;
@@ -333,10 +333,10 @@ namespace CourseWork
             // 
             this.LabelPhoneNumber.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelPhoneNumber.Location = new System.Drawing.Point(283, 512);
+            this.LabelPhoneNumber.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelPhoneNumber.Location = new System.Drawing.Point(265, 511);
             this.LabelPhoneNumber.Name = "LabelPhoneNumber";
-            this.LabelPhoneNumber.Size = new System.Drawing.Size(151, 54);
+            this.LabelPhoneNumber.Size = new System.Drawing.Size(169, 66);
             this.LabelPhoneNumber.TabIndex = 52;
             this.LabelPhoneNumber.Text = "Номер телефону";
             this.LabelPhoneNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -345,10 +345,10 @@ namespace CourseWork
             // 
             this.LabelPassportNumber.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelPassportNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelPassportNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelPassportNumber.Location = new System.Drawing.Point(283, 421);
+            this.LabelPassportNumber.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelPassportNumber.Location = new System.Drawing.Point(265, 408);
             this.LabelPassportNumber.Name = "LabelPassportNumber";
-            this.LabelPassportNumber.Size = new System.Drawing.Size(151, 53);
+            this.LabelPassportNumber.Size = new System.Drawing.Size(169, 74);
             this.LabelPassportNumber.TabIndex = 51;
             this.LabelPassportNumber.Text = "Номер паспорту(ID): ";
             this.LabelPassportNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -357,10 +357,10 @@ namespace CourseWork
             // 
             this.LabelAge.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelAge.Location = new System.Drawing.Point(283, 357);
+            this.LabelAge.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelAge.Location = new System.Drawing.Point(265, 342);
             this.LabelAge.Name = "LabelAge";
-            this.LabelAge.Size = new System.Drawing.Size(151, 29);
+            this.LabelAge.Size = new System.Drawing.Size(169, 44);
             this.LabelAge.TabIndex = 50;
             this.LabelAge.Text = "Вік:";
             this.LabelAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -369,10 +369,10 @@ namespace CourseWork
             // 
             this.LabelLastName.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelLastName.Location = new System.Drawing.Point(283, 291);
+            this.LabelLastName.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelLastName.Location = new System.Drawing.Point(265, 269);
             this.LabelLastName.Name = "LabelLastName";
-            this.LabelLastName.Size = new System.Drawing.Size(151, 29);
+            this.LabelLastName.Size = new System.Drawing.Size(169, 51);
             this.LabelLastName.TabIndex = 49;
             this.LabelLastName.Text = "Прізвище:";
             this.LabelLastName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -381,10 +381,10 @@ namespace CourseWork
             // 
             this.LabelFirstName.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelFirstName.Location = new System.Drawing.Point(283, 224);
+            this.LabelFirstName.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelFirstName.Location = new System.Drawing.Point(265, 195);
             this.LabelFirstName.Name = "LabelFirstName";
-            this.LabelFirstName.Size = new System.Drawing.Size(151, 29);
+            this.LabelFirstName.Size = new System.Drawing.Size(169, 44);
             this.LabelFirstName.TabIndex = 48;
             this.LabelFirstName.Text = "Ім\'я:";
             this.LabelFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

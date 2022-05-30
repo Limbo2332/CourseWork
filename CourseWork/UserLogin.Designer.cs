@@ -55,18 +55,18 @@ namespace CourseWork
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Info;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(592, 129);
+            this.label1.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(547, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(294, 50);
+            this.label1.Size = new System.Drawing.Size(345, 58);
             this.label1.TabIndex = 0;
             this.label1.Text = "Виберіть одну із \r\nзапропонованих нижче послуг";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TakeCreditButton
             // 
-            this.TakeCreditButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TakeCreditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TakeCreditButton.BackColor = System.Drawing.Color.Turquoise;
+            this.TakeCreditButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TakeCreditButton.Location = new System.Drawing.Point(254, 197);
             this.TakeCreditButton.Name = "TakeCreditButton";
             this.TakeCreditButton.Size = new System.Drawing.Size(287, 78);
@@ -77,8 +77,8 @@ namespace CourseWork
             // 
             // TakeDepositButton
             // 
-            this.TakeDepositButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TakeDepositButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TakeDepositButton.BackColor = System.Drawing.Color.Turquoise;
+            this.TakeDepositButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TakeDepositButton.Location = new System.Drawing.Point(895, 197);
             this.TakeDepositButton.Name = "TakeDepositButton";
             this.TakeDepositButton.Size = new System.Drawing.Size(287, 78);
@@ -101,7 +101,7 @@ namespace CourseWork
             // 
             this.LabelInputCreditSum.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelInputCreditSum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelInputCreditSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInputCreditSum.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelInputCreditSum.Location = new System.Drawing.Point(168, 305);
             this.LabelInputCreditSum.Name = "LabelInputCreditSum";
             this.LabelInputCreditSum.Size = new System.Drawing.Size(229, 65);
@@ -114,10 +114,10 @@ namespace CourseWork
             // 
             this.LabelInputCreditTerm.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelInputCreditTerm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelInputCreditTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInputCreditTerm.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelInputCreditTerm.Location = new System.Drawing.Point(168, 398);
             this.LabelInputCreditTerm.Name = "LabelInputCreditTerm";
-            this.LabelInputCreditTerm.Size = new System.Drawing.Size(229, 82);
+            this.LabelInputCreditTerm.Size = new System.Drawing.Size(229, 104);
             this.LabelInputCreditTerm.TabIndex = 5;
             this.LabelInputCreditTerm.Text = "Введіть термін\r\n(кількість місяців для виплати)";
             this.LabelInputCreditTerm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -126,7 +126,7 @@ namespace CourseWork
             // InputTermOfCredit
             // 
             this.InputTermOfCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputTermOfCredit.Location = new System.Drawing.Point(419, 424);
+            this.InputTermOfCredit.Location = new System.Drawing.Point(419, 436);
             this.InputTermOfCredit.Name = "InputTermOfCredit";
             this.InputTermOfCredit.Size = new System.Drawing.Size(188, 30);
             this.InputTermOfCredit.TabIndex = 6;
@@ -138,7 +138,7 @@ namespace CourseWork
             this.CreditOutputPercent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CreditOutputPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CreditOutputPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreditOutputPercent.Location = new System.Drawing.Point(344, 618);
+            this.CreditOutputPercent.Location = new System.Drawing.Point(342, 631);
             this.CreditOutputPercent.Name = "CreditOutputPercent";
             this.CreditOutputPercent.ReadOnly = true;
             this.CreditOutputPercent.Size = new System.Drawing.Size(114, 30);
@@ -148,9 +148,9 @@ namespace CourseWork
             // 
             // CreditCountPercentButton
             // 
-            this.CreditCountPercentButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreditCountPercentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreditCountPercentButton.Location = new System.Drawing.Point(226, 514);
+            this.CreditCountPercentButton.BackColor = System.Drawing.Color.Honeydew;
+            this.CreditCountPercentButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreditCountPercentButton.Location = new System.Drawing.Point(226, 528);
             this.CreditCountPercentButton.Name = "CreditCountPercentButton";
             this.CreditCountPercentButton.Size = new System.Drawing.Size(343, 73);
             this.CreditCountPercentButton.TabIndex = 9;
@@ -161,9 +161,9 @@ namespace CourseWork
             // 
             // ConfirmCreditButton
             // 
-            this.ConfirmCreditButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ConfirmCreditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ConfirmCreditButton.Location = new System.Drawing.Point(254, 678);
+            this.ConfirmCreditButton.BackColor = System.Drawing.Color.Chartreuse;
+            this.ConfirmCreditButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConfirmCreditButton.Location = new System.Drawing.Point(254, 700);
             this.ConfirmCreditButton.Name = "ConfirmCreditButton";
             this.ConfirmCreditButton.Size = new System.Drawing.Size(287, 78);
             this.ConfirmCreditButton.TabIndex = 10;
@@ -176,7 +176,7 @@ namespace CourseWork
             // 
             this.LabelInputDeposit.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelInputDeposit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelInputDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInputDeposit.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelInputDeposit.Location = new System.Drawing.Point(774, 305);
             this.LabelInputDeposit.Name = "LabelInputDeposit";
             this.LabelInputDeposit.Size = new System.Drawing.Size(224, 65);
@@ -199,10 +199,10 @@ namespace CourseWork
             // 
             this.LabelInputDepositTerm.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.LabelInputDepositTerm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelInputDepositTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInputDepositTerm.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelInputDepositTerm.Location = new System.Drawing.Point(774, 398);
             this.LabelInputDepositTerm.Name = "LabelInputDepositTerm";
-            this.LabelInputDepositTerm.Size = new System.Drawing.Size(224, 82);
+            this.LabelInputDepositTerm.Size = new System.Drawing.Size(224, 104);
             this.LabelInputDepositTerm.TabIndex = 13;
             this.LabelInputDepositTerm.Text = "Введіть термін\r\n(кількість місяців для виплати)";
             this.LabelInputDepositTerm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -211,7 +211,7 @@ namespace CourseWork
             // InputTermOfDeposit
             // 
             this.InputTermOfDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputTermOfDeposit.Location = new System.Drawing.Point(1049, 424);
+            this.InputTermOfDeposit.Location = new System.Drawing.Point(1049, 436);
             this.InputTermOfDeposit.Name = "InputTermOfDeposit";
             this.InputTermOfDeposit.Size = new System.Drawing.Size(163, 30);
             this.InputTermOfDeposit.TabIndex = 14;
@@ -220,9 +220,9 @@ namespace CourseWork
             // 
             // DepositCountPercentButton
             // 
-            this.DepositCountPercentButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.DepositCountPercentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DepositCountPercentButton.Location = new System.Drawing.Point(857, 514);
+            this.DepositCountPercentButton.BackColor = System.Drawing.Color.Honeydew;
+            this.DepositCountPercentButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DepositCountPercentButton.Location = new System.Drawing.Point(855, 528);
             this.DepositCountPercentButton.Name = "DepositCountPercentButton";
             this.DepositCountPercentButton.Size = new System.Drawing.Size(343, 73);
             this.DepositCountPercentButton.TabIndex = 15;
@@ -236,7 +236,7 @@ namespace CourseWork
             this.DepositOutputPercent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DepositOutputPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DepositOutputPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DepositOutputPercent.Location = new System.Drawing.Point(986, 617);
+            this.DepositOutputPercent.Location = new System.Drawing.Point(985, 631);
             this.DepositOutputPercent.Name = "DepositOutputPercent";
             this.DepositOutputPercent.ReadOnly = true;
             this.DepositOutputPercent.Size = new System.Drawing.Size(114, 30);
@@ -246,9 +246,9 @@ namespace CourseWork
             // 
             // ConfirmDepositButton
             // 
-            this.ConfirmDepositButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ConfirmDepositButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ConfirmDepositButton.Location = new System.Drawing.Point(895, 678);
+            this.ConfirmDepositButton.BackColor = System.Drawing.Color.Chartreuse;
+            this.ConfirmDepositButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConfirmDepositButton.Location = new System.Drawing.Point(895, 700);
             this.ConfirmDepositButton.Name = "ConfirmDepositButton";
             this.ConfirmDepositButton.Size = new System.Drawing.Size(287, 78);
             this.ConfirmDepositButton.TabIndex = 17;
@@ -315,7 +315,6 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserLogin";
             this.Load += new System.EventHandler(this.UserLogin_Load);
-            this.FormClosing += this.UserLogin_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

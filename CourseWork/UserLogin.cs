@@ -7,6 +7,7 @@ namespace CourseWork
     {
         Credit credit = new Credit();
         Deposit deposit = new Deposit();
+
         public UserLogin()
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
@@ -27,7 +28,6 @@ namespace CourseWork
             if (result == DialogResult.Yes)
                 Application.Exit();
         }
-
         private void BackButton_Click(object sender, EventArgs e)
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -38,7 +38,6 @@ namespace CourseWork
         }
 
         #region CreditCode
-
         private void TakeCreditButton_Click(object sender, EventArgs e)
         {
             LabelInputDeposit.Visible = false;
@@ -62,12 +61,17 @@ namespace CourseWork
         {
             try
             {
+                const double MIN_SUM_OF_CREDIT = 10000;
+                const double MAX_SUM_OF_CREDIT = 1000000;
+                const int MAX_TERM_FOR_CREDIT = 120;
+
                 double sumOfCredit = Convert.ToDouble(InputSumOfCredit.Text);
                 int term = Convert.ToInt32(InputTermOfCredit.Text);
 
-                if (sumOfCredit < 10000 || sumOfCredit > 1000000 || term <= 0
-                    || term > 120)
+                if (sumOfCredit < MIN_SUM_OF_CREDIT || sumOfCredit > MAX_SUM_OF_CREDIT || term <= 0
+                    || term > MAX_TERM_FOR_CREDIT)
                     throw new Exception();
+
                 double interestRate = Bank.CountCreditProcent(credit);
 
                 CreditOutputPercent.Text = interestRate.ToString();
@@ -93,6 +97,7 @@ namespace CourseWork
                     throw new Exception();
 
                 CreditMenu creditMenu = new CreditMenu();
+
                 creditMenu.Owner = this;
                 creditMenu.OutputSumOfCredit.Text = credit.SumOfCredit.ToString();
                 creditMenu.OutputInterestRate.Text = credit.InterestRate.ToString();
@@ -100,6 +105,7 @@ namespace CourseWork
                 creditMenu.OutputTerm.Text = credit.Term.ToString();
                 creditMenu.OutputFinalSum.Text = Bank.CountFinalSumOfCredit(credit).ToString();
                 creditMenu.Show();
+
                 Visible = false;
             }
             catch (Exception)
@@ -137,14 +143,18 @@ namespace CourseWork
         {
             try
             {
+                const double MIN_SUM_OF_DEPOSIT = 1000;
+                const double MAX_SUM_OF_DEPOSIT = 1000000;
+                const int MAX_TERM_FOR_DEPOSIT = 60;
+
                 double sumOfDeposit = Convert.ToDouble(InputSumOfDeposit.Text);
                 int term = Convert.ToInt32(InputTermOfDeposit.Text);
 
                 deposit.SumOfDeposit = sumOfDeposit;
                 deposit.Term = term;
 
-                if (deposit.SumOfDeposit < 1000 || deposit.SumOfDeposit > 1000000 || deposit.Term <= 0
-                    || deposit.Term > 60)
+                if (deposit.SumOfDeposit < MIN_SUM_OF_DEPOSIT || deposit.SumOfDeposit > MAX_SUM_OF_DEPOSIT || deposit.Term <= 0
+                    || deposit.Term > MAX_TERM_FOR_DEPOSIT)
                     throw new Exception();
                 double interestRate = Bank.CountDepositProcent(deposit);
                 DepositOutputPercent.Text = interestRate.ToString();
@@ -168,7 +178,9 @@ namespace CourseWork
                 if (DepositOutputPercent.Text == "0" || deposit.SumOfDeposit.ToString() != InputSumOfDeposit.Text || 
                     deposit.Term.ToString() != InputTermOfDeposit.Text)
                     throw new Exception();
+
                 DepositMenu depositMenu = new DepositMenu();
+
                 depositMenu.OutputSumOfDeposit.Text = deposit.SumOfDeposit.ToString();
                 depositMenu.OutputInterestRate.Text = deposit.InterestRate.ToString();
                 depositMenu.OutputTerm.Text = deposit.Term.ToString();
@@ -176,6 +188,7 @@ namespace CourseWork
                 depositMenu.OutputMontlyPayment.Text = deposit.AverageMontlyIncome().ToString();
                 depositMenu.Owner = this;
                 depositMenu.Show();
+
                 Visible = false;
             }
             catch (Exception)

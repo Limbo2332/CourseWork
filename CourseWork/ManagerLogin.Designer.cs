@@ -31,6 +31,7 @@ namespace CourseWork
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerLogin));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видалитиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,10 +85,10 @@ namespace CourseWork
             this.EditChoise = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Info = new System.Windows.Forms.GroupBox();
+            this.LabelInfoAdditive = new System.Windows.Forms.Label();
             this.TableView = new System.Windows.Forms.DataGridView();
             this.ListBoxInfoChoise = new System.Windows.Forms.ListBox();
             this.LabelInfoChoise = new System.Windows.Forms.Label();
-            this.LabelInfoAdditive = new System.Windows.Forms.Label();
             this.MainMenu.SuspendLayout();
             this.Add.SuspendLayout();
             this.Remove.SuspendLayout();
@@ -108,7 +109,7 @@ namespace CourseWork
             this.завершитиРоботуToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1924, 30);
+            this.MainMenu.Size = new System.Drawing.Size(1924, 28);
             this.MainMenu.TabIndex = 24;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -116,7 +117,7 @@ namespace CourseWork
             // 
             this.додатиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("додатиToolStripMenuItem.Image")));
             this.додатиToolStripMenuItem.Name = "додатиToolStripMenuItem";
-            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(93, 26);
+            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
             this.додатиToolStripMenuItem.Text = "Додати";
             this.додатиToolStripMenuItem.Click += new System.EventHandler(this.додатиToolStripMenuItem_Click);
             // 
@@ -124,7 +125,7 @@ namespace CourseWork
             // 
             this.видалитиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("видалитиToolStripMenuItem.Image")));
             this.видалитиToolStripMenuItem.Name = "видалитиToolStripMenuItem";
-            this.видалитиToolStripMenuItem.Size = new System.Drawing.Size(109, 26);
+            this.видалитиToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.видалитиToolStripMenuItem.Text = "Видалити";
             this.видалитиToolStripMenuItem.Click += new System.EventHandler(this.видалитиToolStripMenuItem_Click);
             // 
@@ -132,7 +133,7 @@ namespace CourseWork
             // 
             this.редагуватиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("редагуватиToolStripMenuItem.Image")));
             this.редагуватиToolStripMenuItem.Name = "редагуватиToolStripMenuItem";
-            this.редагуватиToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
+            this.редагуватиToolStripMenuItem.Size = new System.Drawing.Size(119, 24);
             this.редагуватиToolStripMenuItem.Text = "Редагувати";
             this.редагуватиToolStripMenuItem.Click += new System.EventHandler(this.редагуватиToolStripMenuItem_Click);
             // 
@@ -140,7 +141,7 @@ namespace CourseWork
             // 
             this.інформаціяToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("інформаціяToolStripMenuItem.Image")));
             this.інформаціяToolStripMenuItem.Name = "інформаціяToolStripMenuItem";
-            this.інформаціяToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
+            this.інформаціяToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
             this.інформаціяToolStripMenuItem.Text = "Інформація";
             this.інформаціяToolStripMenuItem.Click += new System.EventHandler(this.інформаціяToolStripMenuItem_Click);
             // 
@@ -148,7 +149,7 @@ namespace CourseWork
             // 
             this.повернутисяНазадToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("повернутисяНазадToolStripMenuItem.Image")));
             this.повернутисяНазадToolStripMenuItem.Name = "повернутисяНазадToolStripMenuItem";
-            this.повернутисяНазадToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.повернутисяНазадToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.повернутисяНазадToolStripMenuItem.Text = "Повернутися";
             this.повернутисяНазадToolStripMenuItem.Click += new System.EventHandler(this.повернутисяНазадToolStripMenuItem_Click);
             // 
@@ -156,7 +157,7 @@ namespace CourseWork
             // 
             this.завершитиРоботуToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("завершитиРоботуToolStripMenuItem.Image")));
             this.завершитиРоботуToolStripMenuItem.Name = "завершитиРоботуToolStripMenuItem";
-            this.завершитиРоботуToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.завершитиРоботуToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
             this.завершитиРоботуToolStripMenuItem.Text = "Завершити";
             this.завершитиРоботуToolStripMenuItem.Click += new System.EventHandler(this.завершитиРоботуToolStripMenuItem_Click);
             // 
@@ -184,6 +185,7 @@ namespace CourseWork
             this.Add.Controls.Add(this.InputAddFirstName);
             this.Add.Controls.Add(this.LabelAddFirstName);
             this.Add.Controls.Add(this.LabelInfoAboutClient);
+            this.Add.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Add.Location = new System.Drawing.Point(12, 31);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(778, 530);
@@ -205,9 +207,10 @@ namespace CourseWork
             // 
             // InputTerm
             // 
+            this.InputTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputTerm.Location = new System.Drawing.Point(622, 300);
             this.InputTerm.Name = "InputTerm";
-            this.InputTerm.Size = new System.Drawing.Size(123, 22);
+            this.InputTerm.Size = new System.Drawing.Size(123, 24);
             this.InputTerm.TabIndex = 17;
             this.InputTerm.Visible = false;
             // 
@@ -217,7 +220,7 @@ namespace CourseWork
             this.AddChoise.FormattingEnabled = true;
             this.AddChoise.Location = new System.Drawing.Point(266, 21);
             this.AddChoise.Name = "AddChoise";
-            this.AddChoise.Size = new System.Drawing.Size(228, 24);
+            this.AddChoise.Size = new System.Drawing.Size(228, 31);
             this.AddChoise.TabIndex = 16;
             this.AddChoise.SelectedIndexChanged += new System.EventHandler(this.AddChoise_SelectedIndexChanged);
             // 
@@ -234,17 +237,19 @@ namespace CourseWork
             // 
             // InputEmployeeSalary
             // 
+            this.InputEmployeeSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputEmployeeSalary.Location = new System.Drawing.Point(354, 406);
             this.InputEmployeeSalary.Name = "InputEmployeeSalary";
-            this.InputEmployeeSalary.Size = new System.Drawing.Size(123, 22);
+            this.InputEmployeeSalary.Size = new System.Drawing.Size(123, 24);
             this.InputEmployeeSalary.TabIndex = 15;
             this.InputEmployeeSalary.Visible = false;
             // 
             // InputSum
             // 
+            this.InputSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputSum.Location = new System.Drawing.Point(622, 163);
             this.InputSum.Name = "InputSum";
-            this.InputSum.Size = new System.Drawing.Size(123, 22);
+            this.InputSum.Size = new System.Drawing.Size(123, 24);
             this.InputSum.TabIndex = 14;
             this.InputSum.Visible = false;
             // 
@@ -262,10 +267,11 @@ namespace CourseWork
             // InputEmployeePosition
             // 
             this.InputEmployeePosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InputEmployeePosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputEmployeePosition.FormattingEnabled = true;
             this.InputEmployeePosition.Location = new System.Drawing.Point(354, 353);
             this.InputEmployeePosition.Name = "InputEmployeePosition";
-            this.InputEmployeePosition.Size = new System.Drawing.Size(123, 24);
+            this.InputEmployeePosition.Size = new System.Drawing.Size(123, 26);
             this.InputEmployeePosition.TabIndex = 28;
             this.InputEmployeePosition.Visible = false;
             // 
@@ -293,9 +299,9 @@ namespace CourseWork
             // 
             // ConfirmAddButton
             // 
-            this.ConfirmAddButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ConfirmAddButton.BackColor = System.Drawing.Color.Chartreuse;
             this.ConfirmAddButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConfirmAddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConfirmAddButton.Font = new System.Drawing.Font("Sitka Small", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ConfirmAddButton.Location = new System.Drawing.Point(283, 454);
             this.ConfirmAddButton.Name = "ConfirmAddButton";
             this.ConfirmAddButton.Size = new System.Drawing.Size(173, 52);
@@ -306,9 +312,10 @@ namespace CourseWork
             // 
             // InputAddPhoneNumber
             // 
+            this.InputAddPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddPhoneNumber.Location = new System.Drawing.Point(354, 297);
             this.InputAddPhoneNumber.Name = "InputAddPhoneNumber";
-            this.InputAddPhoneNumber.Size = new System.Drawing.Size(123, 22);
+            this.InputAddPhoneNumber.Size = new System.Drawing.Size(123, 24);
             this.InputAddPhoneNumber.TabIndex = 10;
             this.InputAddPhoneNumber.Text = "+380";
             // 
@@ -324,9 +331,10 @@ namespace CourseWork
             // 
             // InputAddPassport
             // 
+            this.InputAddPassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddPassport.Location = new System.Drawing.Point(354, 238);
             this.InputAddPassport.Name = "InputAddPassport";
-            this.InputAddPassport.Size = new System.Drawing.Size(123, 22);
+            this.InputAddPassport.Size = new System.Drawing.Size(123, 24);
             this.InputAddPassport.TabIndex = 8;
             // 
             // LabelAddPassport
@@ -341,9 +349,10 @@ namespace CourseWork
             // 
             // InputAddAge
             // 
+            this.InputAddAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddAge.Location = new System.Drawing.Point(354, 196);
             this.InputAddAge.Name = "InputAddAge";
-            this.InputAddAge.Size = new System.Drawing.Size(123, 22);
+            this.InputAddAge.Size = new System.Drawing.Size(123, 24);
             this.InputAddAge.TabIndex = 6;
             // 
             // LabelAddAge
@@ -358,9 +367,10 @@ namespace CourseWork
             // 
             // InputAddLastName
             // 
+            this.InputAddLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddLastName.Location = new System.Drawing.Point(354, 149);
             this.InputAddLastName.Name = "InputAddLastName";
-            this.InputAddLastName.Size = new System.Drawing.Size(123, 22);
+            this.InputAddLastName.Size = new System.Drawing.Size(123, 24);
             this.InputAddLastName.TabIndex = 4;
             // 
             // LabelAddLastName
@@ -374,9 +384,10 @@ namespace CourseWork
             // 
             // InputAddFirstName
             // 
+            this.InputAddFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddFirstName.Location = new System.Drawing.Point(354, 108);
             this.InputAddFirstName.Name = "InputAddFirstName";
-            this.InputAddFirstName.Size = new System.Drawing.Size(123, 22);
+            this.InputAddFirstName.Size = new System.Drawing.Size(123, 24);
             this.InputAddFirstName.TabIndex = 2;
             // 
             // LabelAddFirstName
@@ -408,6 +419,7 @@ namespace CourseWork
             this.Remove.Controls.Add(this.LabelRemovePassport);
             this.Remove.Controls.Add(this.LabelRemoveInfo);
             this.Remove.Controls.Add(this.LabelRemoveWarn);
+            this.Remove.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Remove.Location = new System.Drawing.Point(796, 33);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(781, 375);
@@ -418,9 +430,9 @@ namespace CourseWork
             // 
             // ButtonRemoveConfirm
             // 
-            this.ButtonRemoveConfirm.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonRemoveConfirm.BackColor = System.Drawing.Color.Chartreuse;
             this.ButtonRemoveConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonRemoveConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonRemoveConfirm.Font = new System.Drawing.Font("Sitka Small", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonRemoveConfirm.Location = new System.Drawing.Point(297, 298);
             this.ButtonRemoveConfirm.Name = "ButtonRemoveConfirm";
             this.ButtonRemoveConfirm.Size = new System.Drawing.Size(173, 52);
@@ -431,9 +443,10 @@ namespace CourseWork
             // 
             // InputRemovePhone
             // 
+            this.InputRemovePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputRemovePhone.Location = new System.Drawing.Point(388, 236);
             this.InputRemovePhone.Name = "InputRemovePhone";
-            this.InputRemovePhone.Size = new System.Drawing.Size(123, 22);
+            this.InputRemovePhone.Size = new System.Drawing.Size(123, 24);
             this.InputRemovePhone.TabIndex = 23;
             this.InputRemovePhone.Text = "+380";
             // 
@@ -449,9 +462,10 @@ namespace CourseWork
             // 
             // InputRemovePassport
             // 
+            this.InputRemovePassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputRemovePassport.Location = new System.Drawing.Point(388, 173);
             this.InputRemovePassport.Name = "InputRemovePassport";
-            this.InputRemovePassport.Size = new System.Drawing.Size(123, 22);
+            this.InputRemovePassport.Size = new System.Drawing.Size(123, 24);
             this.InputRemovePassport.TabIndex = 21;
             // 
             // LabelRemovePassport
@@ -501,6 +515,7 @@ namespace CourseWork
             this.Edit.Controls.Add(this.LabelEditChoise);
             this.Edit.Controls.Add(this.EditChoise);
             this.Edit.Controls.Add(this.label4);
+            this.Edit.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Edit.Location = new System.Drawing.Point(796, 414);
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(781, 541);
@@ -512,18 +527,19 @@ namespace CourseWork
             // EditEmployeePosition
             // 
             this.EditEmployeePosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EditEmployeePosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EditEmployeePosition.FormattingEnabled = true;
             this.EditEmployeePosition.Location = new System.Drawing.Point(571, 160);
             this.EditEmployeePosition.Name = "EditEmployeePosition";
-            this.EditEmployeePosition.Size = new System.Drawing.Size(123, 24);
+            this.EditEmployeePosition.Size = new System.Drawing.Size(123, 26);
             this.EditEmployeePosition.TabIndex = 36;
             this.EditEmployeePosition.Visible = false;
             // 
             // EditConfirmButton
             // 
-            this.EditConfirmButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EditConfirmButton.BackColor = System.Drawing.Color.Chartreuse;
             this.EditConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EditConfirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EditConfirmButton.Font = new System.Drawing.Font("Sitka Small", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EditConfirmButton.Location = new System.Drawing.Point(308, 483);
             this.EditConfirmButton.Name = "EditConfirmButton";
             this.EditConfirmButton.Size = new System.Drawing.Size(173, 52);
@@ -535,18 +551,19 @@ namespace CourseWork
             // 
             // InputEditParameter
             // 
-            this.InputEditParameter.Location = new System.Drawing.Point(411, 432);
+            this.InputEditParameter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InputEditParameter.Location = new System.Drawing.Point(411, 440);
             this.InputEditParameter.Name = "InputEditParameter";
-            this.InputEditParameter.Size = new System.Drawing.Size(123, 22);
+            this.InputEditParameter.Size = new System.Drawing.Size(123, 24);
             this.InputEditParameter.TabIndex = 35;
             this.InputEditParameter.Visible = false;
             // 
             // LabelEditParameter
             // 
             this.LabelEditParameter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelEditParameter.Location = new System.Drawing.Point(198, 414);
+            this.LabelEditParameter.Location = new System.Drawing.Point(208, 425);
             this.LabelEditParameter.Name = "LabelEditParameter";
-            this.LabelEditParameter.Size = new System.Drawing.Size(181, 56);
+            this.LabelEditParameter.Size = new System.Drawing.Size(181, 55);
             this.LabelEditParameter.TabIndex = 34;
             this.LabelEditParameter.Text = "gdxg";
             this.LabelEditParameter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -554,9 +571,10 @@ namespace CourseWork
             // 
             // InputEditPhone
             // 
+            this.InputEditPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputEditPhone.Location = new System.Drawing.Point(411, 283);
             this.InputEditPhone.Name = "InputEditPhone";
-            this.InputEditPhone.Size = new System.Drawing.Size(123, 22);
+            this.InputEditPhone.Size = new System.Drawing.Size(123, 24);
             this.InputEditPhone.TabIndex = 33;
             this.InputEditPhone.Text = "+380";
             this.InputEditPhone.Visible = false;
@@ -574,9 +592,10 @@ namespace CourseWork
             // 
             // InputEditPassport
             // 
+            this.InputEditPassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputEditPassport.Location = new System.Drawing.Point(411, 220);
             this.InputEditPassport.Name = "InputEditPassport";
-            this.InputEditPassport.Size = new System.Drawing.Size(123, 22);
+            this.InputEditPassport.Size = new System.Drawing.Size(123, 24);
             this.InputEditPassport.TabIndex = 31;
             this.InputEditPassport.Visible = false;
             // 
@@ -608,7 +627,7 @@ namespace CourseWork
             this.EditChoiseParameter.FormattingEnabled = true;
             this.EditChoiseParameter.Location = new System.Drawing.Point(284, 387);
             this.EditChoiseParameter.Name = "EditChoiseParameter";
-            this.EditChoiseParameter.Size = new System.Drawing.Size(237, 24);
+            this.EditChoiseParameter.Size = new System.Drawing.Size(237, 31);
             this.EditChoiseParameter.TabIndex = 28;
             this.EditChoiseParameter.Visible = false;
             this.EditChoiseParameter.SelectedIndexChanged += new System.EventHandler(this.EditChoiseParameter_SelectedIndexChanged);
@@ -630,7 +649,7 @@ namespace CourseWork
             this.EditChoise.FormattingEnabled = true;
             this.EditChoise.Location = new System.Drawing.Point(284, 99);
             this.EditChoise.Name = "EditChoise";
-            this.EditChoise.Size = new System.Drawing.Size(237, 24);
+            this.EditChoise.Size = new System.Drawing.Size(237, 31);
             this.EditChoise.TabIndex = 17;
             this.EditChoise.SelectedIndexChanged += new System.EventHandler(this.EditChoise_SelectedIndexChanged);
             // 
@@ -651,6 +670,7 @@ namespace CourseWork
             this.Info.Controls.Add(this.TableView);
             this.Info.Controls.Add(this.ListBoxInfoChoise);
             this.Info.Controls.Add(this.LabelInfoChoise);
+            this.Info.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Info.Location = new System.Drawing.Point(12, 574);
             this.Info.Name = "Info";
             this.Info.Size = new System.Drawing.Size(778, 475);
@@ -658,6 +678,16 @@ namespace CourseWork
             this.Info.TabStop = false;
             this.Info.Text = "Інформація";
             this.Info.Visible = false;
+            // 
+            // LabelInfoAdditive
+            // 
+            this.LabelInfoAdditive.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInfoAdditive.Location = new System.Drawing.Point(375, 21);
+            this.LabelInfoAdditive.Name = "LabelInfoAdditive";
+            this.LabelInfoAdditive.Size = new System.Drawing.Size(394, 89);
+            this.LabelInfoAdditive.TabIndex = 3;
+            this.LabelInfoAdditive.Text = "Для оновлення інформації в певному розділі\r\nклацніть на цей розділ ще раз.";
+            this.LabelInfoAdditive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TableView
             // 
@@ -667,13 +697,21 @@ namespace CourseWork
             this.TableView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TableView.ColumnHeadersHeight = 36;
+            this.TableView.ColumnHeadersHeight = 45;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TableView.DefaultCellStyle = dataGridViewCellStyle2;
             this.TableView.Location = new System.Drawing.Point(19, 137);
             this.TableView.Name = "TableView";
             this.TableView.ReadOnly = true;
@@ -685,11 +723,12 @@ namespace CourseWork
             // 
             // ListBoxInfoChoise
             // 
+            this.ListBoxInfoChoise.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ListBoxInfoChoise.FormattingEnabled = true;
-            this.ListBoxInfoChoise.ItemHeight = 16;
-            this.ListBoxInfoChoise.Location = new System.Drawing.Point(201, 21);
+            this.ListBoxInfoChoise.ItemHeight = 18;
+            this.ListBoxInfoChoise.Location = new System.Drawing.Point(191, 25);
             this.ListBoxInfoChoise.Name = "ListBoxInfoChoise";
-            this.ListBoxInfoChoise.Size = new System.Drawing.Size(178, 84);
+            this.ListBoxInfoChoise.Size = new System.Drawing.Size(178, 94);
             this.ListBoxInfoChoise.TabIndex = 1;
             this.ListBoxInfoChoise.SelectedIndexChanged += new System.EventHandler(this.ListBoxInfoChoise_SelectedIndexChanged);
             // 
@@ -702,16 +741,6 @@ namespace CourseWork
             this.LabelInfoChoise.TabIndex = 0;
             this.LabelInfoChoise.Text = "Оберіть один із запропонованих варіантів:";
             this.LabelInfoChoise.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LabelInfoAdditive
-            // 
-            this.LabelInfoAdditive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelInfoAdditive.Location = new System.Drawing.Point(375, 21);
-            this.LabelInfoAdditive.Name = "LabelInfoAdditive";
-            this.LabelInfoAdditive.Size = new System.Drawing.Size(394, 89);
-            this.LabelInfoAdditive.TabIndex = 3;
-            this.LabelInfoAdditive.Text = "Для оновлення інформації в певному розділі\r\nклацніть на цей розділ ще раз.";
-            this.LabelInfoAdditive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ManagerLogin
             // 
@@ -729,7 +758,6 @@ namespace CourseWork
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagerMenu";
             this.Load += new System.EventHandler(this.ManagerLogin_Load);
-            this.FormClosing += this.ManagerLogin_FormClosing;
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.Add.ResumeLayout(false);

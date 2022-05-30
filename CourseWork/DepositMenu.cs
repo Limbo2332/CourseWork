@@ -48,7 +48,7 @@ namespace CourseWork
         #endregion
 
         #region Checking that the input is correct and availability of deposit/credit
-        private bool CheckCorrectOrNot()
+        private bool CheckCorrectness()
         {
             try
             {
@@ -64,11 +64,14 @@ namespace CourseWork
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
+                const int AGE_OF_MAJORITY = 18;
+                const int RETIREMENT_AGE = 65;
+
                 if (firstName.Length < 2 || !Name.IsMatch(firstName))
                     throw new Exception("Ви ввели недопустиме значення для імені.");
                 else if (lastName.Length < 2 || !Name.IsMatch(lastName))
                     throw new Exception("Ви ввели недопустиме значення для прізвища.");
-                else if (age < 18 || age > 65)
+                else if (age < AGE_OF_MAJORITY || age > RETIREMENT_AGE)
                     throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");
                 else if (passportNumber.ToString().Length != 9 && !ForPassportNumber.IsMatch(passportNumber))
                     throw new Exception("Номер паспорту повинен містити 9 цифр. Перевірте правильність вводу.");
@@ -82,20 +85,18 @@ namespace CourseWork
             catch (FormatException)
             {
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
-                return false;
             }
             catch (OverflowException)
             {
                 MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
-                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
             }
+            return false;
         }
-        private bool HasDepositOrNot()
+        private bool HasDeposit()
         {
             foreach (var deposit in Bank.ListOfDeposits)
             {
@@ -104,7 +105,7 @@ namespace CourseWork
             }
             return false;
         }
-        private bool HasCreditOrNot()
+        private bool HasCredit()
         {
             foreach (var credit in Bank.ListOfCredits)
             {
@@ -131,39 +132,47 @@ namespace CourseWork
         private void ConfirmDepositButton_Click(object sender, EventArgs e)
         {
 
-            if (CheckCorrectOrNot())
+            if (CheckCorrectness())
             {
-                if (HasDepositOrNot())
+                if (HasDeposit())
                 {
                     MessageBox.Show("Ви вже маєте депозит!");
                     return;
                 }
-                else if (HasCreditOrNot())
+                else if (HasCredit())
                 {
                     MessageBox.Show("Ви вже маєте кредит!");
                     return;
                 }
-                string path2 = @"../../../deposits.txt";
                 Person person = new Person(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
                     InputPassportNumber.Text, InputPhoneNumber.Text);
-                Deposit deposit = new Deposit(person, Convert.ToDouble(OutputSumOfDeposit.Text), Convert.ToInt32(OutputTerm.Text), 
+                Deposit deposit = new Deposit(person, Convert.ToDouble(OutputSumOfDeposit.Text), Convert.ToInt32(OutputTerm.Text),
                     Convert.ToDouble(OutputInterestRate.Text), Convert.ToDouble(OutputFinalSum.Text));
 
                 deposit.ID = Guid.NewGuid();
 
+                string path = @"../../../deposits.txt";
                 string contents = deposit.ToString();
+
                 Bank.ListOfDeposits.Add(deposit);
-                File.AppendAllText(path2, contents);
+                File.AppendAllText(path, contents);
+
                 MessageBox.Show("Ви успішно отримали депозит в нашому банку!");
 
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                var result = MessageBox.Show("Продовжити роботу?", "Залишитися", buttons);
-                if (result == DialogResult.Yes)
-                    ConfirmDepositButton.Enabled = false;
-                else
-                    Application.Exit();
+                ContinueWork();
             }
         }
+
+        private void ContinueWork()
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show("Продовжити роботу?", "Залишитися", buttons);
+            if (result == DialogResult.Yes)
+                ConfirmDepositButton.Enabled = false;
+            else
+                Application.Exit();
+        }
+
         private void GetConsultationButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Гаряча лінія: 0800 500 003" + "\n" + new string(' ', 24) + "3700" + "\n" + "Також ви можете скачати " +
@@ -172,16 +181,16 @@ namespace CourseWork
 
         private void CheckCreditOrDepositButton_Click(object sender, EventArgs e)
         {
-            if (CheckCorrectOrNot())
+            if (CheckCorrectness())
             {
-                if (HasCreditOrNot())
+                if (HasCredit())
                 {
                     MessageBox.Show("Ви вже маєте кредит! Ви не можете взяти депозит!");
                     return;
                 }
                 else
                 {
-                    if (HasDepositOrNot())
+                    if (HasDeposit())
                     {
                         MessageBox.Show("Ви вже маєте депозит! Інформація на екрані!");
 
