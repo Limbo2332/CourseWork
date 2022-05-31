@@ -17,7 +17,7 @@ namespace CourseWork
         {
 
         }
-        public Deposit(Person Owner, double SumOfDeposit, int Term, double InterestRate, double FinalSum)
+        public Deposit(Client Owner, double SumOfDeposit, int Term, double InterestRate, double FinalSum)
         {
             this.Owner = Owner;
             this.SumOfDeposit = SumOfDeposit;
@@ -49,7 +49,7 @@ namespace CourseWork
             }
         }
         public int Term { get; set; }
-        public Person Owner { get; set; }
+        public Client Owner { get; set; }
 
         /// <summary>
         /// Розраховує середній місячний дохід
@@ -62,15 +62,6 @@ namespace CourseWork
         {
             return ID.ToString() + " " + Owner.ToString() + " "
                     + SumOfDeposit.ToString() + " " + Term.ToString() + " " + InterestRate.ToString() + " " + FinalSum.ToString() + "\n";
-        }
-        public override bool Equals(object obj)
-        {
-            Deposit deposit = (Deposit)obj;
-            return deposit.ID == ID;
-        }
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
     }
 }

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bank.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Credit.cs" />
     <Compile Include="CreditMenu.cs">
       <SubType>Form</SubType>

@@ -103,6 +103,7 @@ namespace CourseWork
                 int age = Convert.ToInt32(inputAge.Text);
                 string passportNumber = inputPassport.Text;
                 string phoneNumber = inputPhonenumber.Text;
+
                 // регулярні вирази
 
                 Regex Name = new Regex(@"\w");
@@ -232,7 +233,7 @@ namespace CourseWork
                     }
 
                     credit.ID = Guid.NewGuid();
-                    credit.Owner = person;
+                    credit.Owner = (Client)person;
 
                     string path = @"../../../credits.txt";
                     string contents = credit.ToString();
@@ -258,7 +259,7 @@ namespace CourseWork
                         return;
                     }
                     deposit.ID = Guid.NewGuid();
-                    deposit.Owner = person;
+                    deposit.Owner = (Client)person;
 
                     string path = @"../../../deposits.txt";
                     string contents = deposit.ToString();
@@ -503,7 +504,7 @@ namespace CourseWork
             {
                 try
                 {
-                    string passportNumber = InputEditPassport.Text;
+                    string passportNumber = InputEditParameter.Text;
                     foreach (var credit in Bank.ListOfCredits)
                         if (credit.Owner.PassportNumber == passportNumber)
                             throw new Exception("Користувач з цим номером паспорту вже має кредит! Операцію відмінено!");
@@ -696,7 +697,7 @@ namespace CourseWork
 
                         if (EditPersonValues(ref person))
                         {
-                            credit.Owner = person;
+                            credit.Owner = (Client)person;
                             return;
                         }
                         if ((string)EditChoiseParameter.SelectedItem == "Суму кредиту")
@@ -841,7 +842,7 @@ namespace CourseWork
 
                         if (EditPersonValues(ref person))
                         {
-                            deposit.Owner = person;
+                            deposit.Owner = (Client)person;
                             return;
                         }
 

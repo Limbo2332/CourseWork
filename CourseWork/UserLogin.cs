@@ -33,8 +33,10 @@ namespace CourseWork
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Ви дійсно хочете повернутися назад?", "Повернутися назад", buttons);
             if (result == DialogResult.Yes)
+            {
                 Owner.Visible = true;
                 Visible = false;
+            }
         }
 
         #region CreditCode

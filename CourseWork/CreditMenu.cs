@@ -111,6 +111,13 @@ namespace CourseWork
                     return true;
             return false;
         }
+        private bool IsEmployee()
+        {
+            foreach (var employee in Bank.ListOfEmployees)
+                if (employee.PassportNumber == InputPassportNumber.Text || employee.PhoneNumber == InputPhoneNumber.Text)
+                    return true;
+            return false;
+        }
         #endregion
 
         #region InfoAboutCredits
@@ -139,10 +146,14 @@ namespace CourseWork
                 {
                     MessageBox.Show("Ви вже маєте кредит!");
                     return;
+                }else if (IsEmployee())
+                {
+                    MessageBox.Show("Ви вже працюєте в нашому банку!");
+                    return;
                 }
-                Person person = new Person(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
+                Client client = new Client(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
                     InputPassportNumber.Text, InputPhoneNumber.Text);
-                Credit credit = new Credit(person, Convert.ToDouble(OutputSumOfCredit.Text), Convert.ToInt32(OutputTerm.Text),
+                Credit credit = new Credit(client, Convert.ToDouble(OutputSumOfCredit.Text), Convert.ToInt32(OutputTerm.Text),
                     Convert.ToDouble(OutputInterestRate.Text), Convert.ToDouble(OutputFinalSum.Text));
 
                 credit.ID = Guid.NewGuid();

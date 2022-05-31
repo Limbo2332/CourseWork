@@ -13,7 +13,7 @@ namespace CourseWork
         {
 
         }
-        public Credit(Person Owner, double SumOfCredit, int Term, double InterestRate, double FinalSum)
+        public Credit(Client Owner, double SumOfCredit, int Term, double InterestRate, double FinalSum)
         {
             this.Owner = Owner;
             this.SumOfCredit = SumOfCredit;
@@ -40,7 +40,7 @@ namespace CourseWork
             }
         }
         public int Term { get; set; }
-        public Person Owner { get; set; }
+        public Client Owner { get; set; }
 
         /// <summary>
         /// Розраховує щомісячний платіж
@@ -55,15 +55,6 @@ namespace CourseWork
         {
             return ID.ToString() + " " + Owner.ToString() + " " + SumOfCredit.ToString() + " " + Term.ToString() + " " + InterestRate.ToString() + " " +
                 FinalSum.ToString() + "\n";
-        }
-        public override bool Equals(object other)
-        {
-            Credit credit = (Credit)other;
-            return ID.ToString() == credit.ID.ToString();
-        }
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();  
         }
     }
 }

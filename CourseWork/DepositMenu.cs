@@ -114,6 +114,13 @@ namespace CourseWork
             }
             return false;
         }
+        private bool IsEmployee()
+        {
+            foreach (var employee in Bank.ListOfEmployees)
+                if (employee.PassportNumber == InputPassportNumber.Text || employee.PhoneNumber == InputPhoneNumber.Text)
+                    return true;
+            return false;
+        }
         #endregion
 
         #region InfoAboutDeposits
@@ -144,9 +151,9 @@ namespace CourseWork
                     MessageBox.Show("Ви вже маєте кредит!");
                     return;
                 }
-                Person person = new Person(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
+                Client client = new Client(InputFirstName.Text, InputLastName.Text, Convert.ToInt32(InputAge.Text),
                     InputPassportNumber.Text, InputPhoneNumber.Text);
-                Deposit deposit = new Deposit(person, Convert.ToDouble(OutputSumOfDeposit.Text), Convert.ToInt32(OutputTerm.Text),
+                Deposit deposit = new Deposit(client, Convert.ToDouble(OutputSumOfDeposit.Text), Convert.ToInt32(OutputTerm.Text),
                     Convert.ToDouble(OutputInterestRate.Text), Convert.ToDouble(OutputFinalSum.Text));
 
                 deposit.ID = Guid.NewGuid();
@@ -186,6 +193,10 @@ namespace CourseWork
                 if (HasCredit())
                 {
                     MessageBox.Show("Ви вже маєте кредит! Ви не можете взяти депозит!");
+                    return;
+                }else if (IsEmployee())
+                {
+                    MessageBox.Show("Ви вже працюєте в нашому банку! Ви не можете взяти кредит чи депозит!");
                     return;
                 }
                 else
