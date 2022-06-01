@@ -5,8 +5,8 @@ namespace CourseWork
 {
     public partial class UserLogin : Form
     {
-        Credit credit = new Credit();
-        Deposit deposit = new Deposit();
+        Credit credit;
+        Deposit deposit;
 
         public UserLogin()
         {
@@ -74,12 +74,13 @@ namespace CourseWork
                     || term > MAX_TERM_FOR_CREDIT)
                     throw new Exception();
 
-                double interestRate = Bank.CountCreditProcent(credit);
+                credit = new Credit();
 
-                CreditOutputPercent.Text = interestRate.ToString();
                 credit.SumOfCredit = sumOfCredit;
                 credit.Term = term;
-                credit.InterestRate = interestRate;
+                credit.InterestRate = Bank.CountCreditProcent(credit);
+
+                CreditOutputPercent.Text = credit.InterestRate.ToString();
             }
             catch (Exception)
             {
@@ -152,17 +153,19 @@ namespace CourseWork
                 double sumOfDeposit = Convert.ToDouble(InputSumOfDeposit.Text);
                 int term = Convert.ToInt32(InputTermOfDeposit.Text);
 
+                deposit = new Deposit();
+
                 deposit.SumOfDeposit = sumOfDeposit;
                 deposit.Term = term;
 
                 if (deposit.SumOfDeposit < MIN_SUM_OF_DEPOSIT || deposit.SumOfDeposit > MAX_SUM_OF_DEPOSIT || deposit.Term <= 0
                     || deposit.Term > MAX_TERM_FOR_DEPOSIT)
                     throw new Exception();
-                double interestRate = Bank.CountDepositProcent(deposit);
-                DepositOutputPercent.Text = interestRate.ToString();
 
-                deposit.InterestRate = interestRate;
+                deposit.InterestRate = Bank.CountDepositProcent(deposit);
                 deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
+
+                DepositOutputPercent.Text = deposit.InterestRate.ToString();
             }
             catch (Exception)
             {

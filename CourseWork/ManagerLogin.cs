@@ -168,16 +168,20 @@ namespace CourseWork
             if (CheckCorrectness(InputAddFirstName, InputAddLastName, InputAddAge, InputAddPassport, InputAddPhoneNumber))
             {
 
-                Person person = new Person(InputAddFirstName.Text, InputAddLastName.Text, Convert.ToInt32(InputAddAge.Text),
+                Person person = new Client(InputAddFirstName.Text, InputAddLastName.Text, Convert.ToInt32(InputAddAge.Text),
                     InputAddPassport.Text, InputAddPhoneNumber.Text);
+
+                Person employee = new Employee(InputAddFirstName.Text, InputAddLastName.Text, Convert.ToInt32(InputAddAge.Text),
+                    InputAddPassport.Text, InputAddPhoneNumber.Text);
+
                 if (HasCredit(InputAddPassport, InputAddPhoneNumber))
                 {
-                    MessageBox.Show("Ця людина вже має кредит в нашому банку! Ми не можемо взяти її на роботу!");
+                    MessageBox.Show("Ця людина вже має кредит в нашому банку! Ми не можемо дати їй ще один кредит!");
                     return;
                 }
                 if (HasDeposit(InputAddPassport, InputAddPhoneNumber))
                 {
-                    MessageBox.Show("Ця людина вже має депозит в нашому банку! Ми не можемо взяти її на роботу!");
+                    MessageBox.Show("Ця людина вже має депозит в нашому банку! Ми не можемо дати їй ще один депозит!");
                     return;
                 }
                 if (IsEmployee(InputAddPassport, InputAddPhoneNumber))
@@ -188,13 +192,13 @@ namespace CourseWork
 
                 if ((string)AddChoise.SelectedItem == "Співробітника")
                 {
-                    Employee employee = new Employee(person.FirstName, person.LastName, person.Age, person.PassportNumber, person.PhoneNumber);
-                    employee.PositionName = (Position)InputEmployeePosition.SelectedIndex;
-                    employee.WorkExperience = 0;
+                    Employee finalEmployee = (Employee)employee;
+                    finalEmployee.PositionName = (Position)InputEmployeePosition.SelectedIndex;
+                    finalEmployee.WorkExperience = 0;
                     try
                     {
-                        employee.Salary = Convert.ToInt32(InputEmployeeSalary.Text);
-                        if (employee.Salary < 6500 || employee.Salary > 100000)
+                        finalEmployee.Salary = Convert.ToInt32(InputEmployeeSalary.Text);
+                        if (finalEmployee.Salary < 6500 || finalEmployee.Salary > 100000)
                             throw new Exception("Зарплата не може бути більшою за 100000 грн і меншою за 6500 грн!");
 
                     }
@@ -212,7 +216,7 @@ namespace CourseWork
                     string contents = employee.ToString();
 
                     File.AppendAllText(path, contents);
-                    Bank.ListOfEmployees.Add(employee);
+                    Bank.ListOfEmployees.Add(finalEmployee);
 
                     MessageBox.Show("Робітник успішно взятий на роботу!");
                 }
@@ -233,7 +237,9 @@ namespace CourseWork
                     }
 
                     credit.ID = Guid.NewGuid();
-                    credit.Owner = (Client)person;
+
+                    Client client = (Client)person;
+                    credit.Owner = client;
 
                     string path = @"../../../credits.txt";
                     string contents = credit.ToString();
@@ -259,7 +265,9 @@ namespace CourseWork
                         return;
                     }
                     deposit.ID = Guid.NewGuid();
-                    deposit.Owner = (Client)person;
+
+                    Client client = (Client)person;
+                    deposit.Owner = client;
 
                     string path = @"../../../deposits.txt";
                     string contents = deposit.ToString();

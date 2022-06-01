@@ -56,14 +56,18 @@ namespace CourseWork
                 string[] fields = creditsInfo[i].Split(' ');
                 Client client = new Client(fields[1], fields[2], Convert.ToInt32(fields[3]), fields[4], fields[5]);
 
-                client.credit = new Credit();
-                client.credit.Owner = client;
-                client.credit.SumOfCredit = Convert.ToDouble(fields[6]);
-                client.credit.Term = Convert.ToInt32(fields[7]);
-                client.credit.InterestRate = Convert.ToDouble(fields[8]);
-                client.credit.FinalSum = Convert.ToDouble(fields[9]);
-                client.credit.ID = Guid.Parse(fields[0]);
-                listOfCredits.Add(client.credit);
+                client.CreditId = Guid.Parse(fields[0]);
+
+                Credit credit = new Credit();
+
+                credit.Owner = client;
+                credit.SumOfCredit = Convert.ToDouble(fields[6]);
+                credit.Term = Convert.ToInt32(fields[7]);
+                credit.InterestRate = Convert.ToDouble(fields[8]);
+                credit.FinalSum = Convert.ToDouble(fields[9]);
+                credit.ID = client.CreditId;
+
+                listOfCredits.Add(credit);
             }
             string[] depositsInfo = File.ReadAllLines(path1);
             for (int i = 1; i < depositsInfo.Length; i++)
@@ -72,14 +76,18 @@ namespace CourseWork
                     continue;
                 string[] fields = depositsInfo[i].Split(' ');
                 Client client = new Client(fields[1], fields[2], Convert.ToInt32(fields[3]), fields[4], fields[5]);
-                client.deposit = new Deposit();
-                client.deposit.Owner = client;
-                client.deposit.SumOfDeposit = Convert.ToDouble(fields[6]);
-                client.deposit.Term = Convert.ToInt32(fields[7]);
-                client.deposit.InterestRate = Convert.ToDouble(fields[8]);
-                client.deposit.FinalSum = Convert.ToDouble(fields[9]);
-                client.deposit.ID = Guid.Parse(fields[0]);
-                listOfDeposits.Add(client.deposit);
+                client.DepositId = Guid.Parse(fields[0]);
+
+                Deposit deposit = new Deposit();
+
+                deposit.Owner = client;
+                deposit.SumOfDeposit = Convert.ToDouble(fields[6]);
+                deposit.Term = Convert.ToInt32(fields[7]);
+                deposit.InterestRate = Convert.ToDouble(fields[8]);
+                deposit.FinalSum = Convert.ToDouble(fields[9]);
+                deposit.ID = client.DepositId;
+
+                listOfDeposits.Add(deposit);
             }
             
             string[] employeesInfo = File.ReadAllLines(path2);
