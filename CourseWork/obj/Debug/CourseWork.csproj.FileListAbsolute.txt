@@ -12,3 +12,4 @@ C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.pdb
 C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\bin\Debug\CourseWork.pdb
 C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.CreditMenu.resources
 C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.DepositMenu.resources
+C:\Users\Main\Desktop\CourseWork\CourseWork\CourseWork\obj\Debug\CourseWork.csproj.SuggestedBindingRedirects.cache

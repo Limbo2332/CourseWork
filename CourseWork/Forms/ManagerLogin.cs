@@ -706,6 +706,7 @@ namespace CourseWork
                         if (EditPersonValues(ref person))
                         {
                             credit.Owner = (Client)person;
+                            Manager.UpdateLists();
                             return;
                         }
                         if ((string)EditChoiseParameter.SelectedItem == "Суму кредиту")
@@ -851,6 +852,7 @@ namespace CourseWork
                         if (EditPersonValues(ref person))
                         {
                             deposit.Owner = (Client)person;
+                            Manager.UpdateLists();
                             return;
                         }
 

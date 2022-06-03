@@ -56,18 +56,16 @@ namespace CourseWork
                 string[] fields = creditsInfo[i].Split(' ');
                 Client client = new Client(fields[1], fields[2], Convert.ToInt32(fields[3]), fields[4], fields[5]);
 
-                client.CreditId = Guid.Parse(fields[0]);
+                client.credit = new Credit();
 
-                Credit credit = new Credit();
+                client.credit.ID = Guid.Parse(fields[0]);
+                client.credit.Owner = client;
+                client.credit.SumOfCredit = Convert.ToDouble(fields[6]);
+                client.credit.Term = Convert.ToInt32(fields[7]);
+                client.credit.InterestRate = Convert.ToDouble(fields[8]);
+                client.credit.FinalSum = Convert.ToDouble(fields[9]);
 
-                credit.Owner = client;
-                credit.SumOfCredit = Convert.ToDouble(fields[6]);
-                credit.Term = Convert.ToInt32(fields[7]);
-                credit.InterestRate = Convert.ToDouble(fields[8]);
-                credit.FinalSum = Convert.ToDouble(fields[9]);
-                credit.ID = client.CreditId;
-
-                listOfCredits.Add(credit);
+                listOfCredits.Add(client.credit);
             }
             string[] depositsInfo = File.ReadAllLines(path1);
             for (int i = 1; i < depositsInfo.Length; i++)
@@ -76,18 +74,16 @@ namespace CourseWork
                     continue;
                 string[] fields = depositsInfo[i].Split(' ');
                 Client client = new Client(fields[1], fields[2], Convert.ToInt32(fields[3]), fields[4], fields[5]);
-                client.DepositId = Guid.Parse(fields[0]);
+                client.deposit = new Deposit();
+                client.deposit.ID = Guid.Parse(fields[0]);
 
-                Deposit deposit = new Deposit();
+                client.deposit.Owner = client;
+                client.deposit.SumOfDeposit = Convert.ToDouble(fields[6]);
+                client.deposit.Term = Convert.ToInt32(fields[7]);
+                client.deposit.InterestRate = Convert.ToDouble(fields[8]);
+                client.deposit.FinalSum = Convert.ToDouble(fields[9]);
 
-                deposit.Owner = client;
-                deposit.SumOfDeposit = Convert.ToDouble(fields[6]);
-                deposit.Term = Convert.ToInt32(fields[7]);
-                deposit.InterestRate = Convert.ToDouble(fields[8]);
-                deposit.FinalSum = Convert.ToDouble(fields[9]);
-                deposit.ID = client.DepositId;
-
-                listOfDeposits.Add(deposit);
+                listOfDeposits.Add(client.deposit);
             }
             
             string[] employeesInfo = File.ReadAllLines(path2);
@@ -130,23 +126,21 @@ namespace CourseWork
 
             File.AppendAllText(path, "ID | Ім'я | Прізвище | Вік | Номер паспорту | Номер телефону | Сума кредиту | Термін | " +
                             "Процент по кредиту | Сума до виплати\n");
+
             foreach (var creditInfo in Bank.ListOfCredits)
-            {
                 File.AppendAllText(path, creditInfo.ToString());
-            }
 
             File.AppendAllText(path1, "ID | Ім'я | Прізвище | Вік | Номер паспорту | Номер телефону | Сума депозиту | Термін | " +
                 "Процент по депозиту | Сума виплати\n");
-            foreach (var depositInfo in Bank.ListOfDeposits)
-            {
-                File.AppendAllText(path1, depositInfo.ToString());
-            }
 
-            File.AppendAllText(path2, "Ім'я | Прізвище | Вік | Номер паспорту | Номер телефону | Посада в банку | Досвід роботи | Зарплата\n");
+            foreach (var depositInfo in Bank.ListOfDeposits)
+                File.AppendAllText(path1, depositInfo.ToString());
+
+            File.AppendAllText(path2, "Ім'я | Прізвище | Вік | Номер паспорту | Номер телефону | Посада в банку | Досвід роботи " +
+                "| Зарплата\n");
+
             foreach (var employeeInfo in Bank.ListOfEmployees)
-            {
                 File.AppendAllText(path2, employeeInfo.ToString());
-            }
         }
     }
 }

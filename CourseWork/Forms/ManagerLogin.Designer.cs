@@ -30,8 +30,7 @@ namespace CourseWork
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerLogin));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видалитиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -210,7 +209,7 @@ namespace CourseWork
             this.InputTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputTerm.Location = new System.Drawing.Point(622, 300);
             this.InputTerm.Name = "InputTerm";
-            this.InputTerm.Size = new System.Drawing.Size(123, 24);
+            this.InputTerm.Size = new System.Drawing.Size(138, 24);
             this.InputTerm.TabIndex = 17;
             this.InputTerm.Visible = false;
             // 
@@ -218,9 +217,9 @@ namespace CourseWork
             // 
             this.AddChoise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddChoise.FormattingEnabled = true;
-            this.AddChoise.Location = new System.Drawing.Point(266, 21);
+            this.AddChoise.Location = new System.Drawing.Point(238, 21);
             this.AddChoise.Name = "AddChoise";
-            this.AddChoise.Size = new System.Drawing.Size(228, 31);
+            this.AddChoise.Size = new System.Drawing.Size(267, 31);
             this.AddChoise.TabIndex = 16;
             this.AddChoise.SelectedIndexChanged += new System.EventHandler(this.AddChoise_SelectedIndexChanged);
             // 
@@ -240,16 +239,16 @@ namespace CourseWork
             this.InputEmployeeSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputEmployeeSalary.Location = new System.Drawing.Point(354, 406);
             this.InputEmployeeSalary.Name = "InputEmployeeSalary";
-            this.InputEmployeeSalary.Size = new System.Drawing.Size(123, 24);
+            this.InputEmployeeSalary.Size = new System.Drawing.Size(138, 24);
             this.InputEmployeeSalary.TabIndex = 15;
             this.InputEmployeeSalary.Visible = false;
             // 
             // InputSum
             // 
             this.InputSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputSum.Location = new System.Drawing.Point(622, 163);
+            this.InputSum.Location = new System.Drawing.Point(622, 126);
             this.InputSum.Name = "InputSum";
-            this.InputSum.Size = new System.Drawing.Size(123, 24);
+            this.InputSum.Size = new System.Drawing.Size(138, 24);
             this.InputSum.TabIndex = 14;
             this.InputSum.Visible = false;
             // 
@@ -271,7 +270,7 @@ namespace CourseWork
             this.InputEmployeePosition.FormattingEnabled = true;
             this.InputEmployeePosition.Location = new System.Drawing.Point(354, 353);
             this.InputEmployeePosition.Name = "InputEmployeePosition";
-            this.InputEmployeePosition.Size = new System.Drawing.Size(123, 26);
+            this.InputEmployeePosition.Size = new System.Drawing.Size(138, 26);
             this.InputEmployeePosition.TabIndex = 28;
             this.InputEmployeePosition.Visible = false;
             // 
@@ -315,7 +314,7 @@ namespace CourseWork
             this.InputAddPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddPhoneNumber.Location = new System.Drawing.Point(354, 297);
             this.InputAddPhoneNumber.Name = "InputAddPhoneNumber";
-            this.InputAddPhoneNumber.Size = new System.Drawing.Size(123, 24);
+            this.InputAddPhoneNumber.Size = new System.Drawing.Size(138, 24);
             this.InputAddPhoneNumber.TabIndex = 10;
             this.InputAddPhoneNumber.Text = "+380";
             // 
@@ -334,7 +333,7 @@ namespace CourseWork
             this.InputAddPassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddPassport.Location = new System.Drawing.Point(354, 238);
             this.InputAddPassport.Name = "InputAddPassport";
-            this.InputAddPassport.Size = new System.Drawing.Size(123, 24);
+            this.InputAddPassport.Size = new System.Drawing.Size(138, 24);
             this.InputAddPassport.TabIndex = 8;
             // 
             // LabelAddPassport
@@ -352,7 +351,7 @@ namespace CourseWork
             this.InputAddAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddAge.Location = new System.Drawing.Point(354, 196);
             this.InputAddAge.Name = "InputAddAge";
-            this.InputAddAge.Size = new System.Drawing.Size(123, 24);
+            this.InputAddAge.Size = new System.Drawing.Size(138, 24);
             this.InputAddAge.TabIndex = 6;
             // 
             // LabelAddAge
@@ -370,7 +369,7 @@ namespace CourseWork
             this.InputAddLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddLastName.Location = new System.Drawing.Point(354, 149);
             this.InputAddLastName.Name = "InputAddLastName";
-            this.InputAddLastName.Size = new System.Drawing.Size(123, 24);
+            this.InputAddLastName.Size = new System.Drawing.Size(138, 24);
             this.InputAddLastName.TabIndex = 4;
             // 
             // LabelAddLastName
@@ -387,7 +386,7 @@ namespace CourseWork
             this.InputAddFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputAddFirstName.Location = new System.Drawing.Point(354, 108);
             this.InputAddFirstName.Name = "InputAddFirstName";
-            this.InputAddFirstName.Size = new System.Drawing.Size(123, 24);
+            this.InputAddFirstName.Size = new System.Drawing.Size(138, 24);
             this.InputAddFirstName.TabIndex = 2;
             // 
             // LabelAddFirstName
@@ -647,9 +646,9 @@ namespace CourseWork
             // 
             this.EditChoise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EditChoise.FormattingEnabled = true;
-            this.EditChoise.Location = new System.Drawing.Point(284, 99);
+            this.EditChoise.Location = new System.Drawing.Point(248, 92);
             this.EditChoise.Name = "EditChoise";
-            this.EditChoise.Size = new System.Drawing.Size(237, 31);
+            this.EditChoise.Size = new System.Drawing.Size(302, 31);
             this.EditChoise.TabIndex = 17;
             this.EditChoise.SelectedIndexChanged += new System.EventHandler(this.EditChoise_SelectedIndexChanged);
             // 
@@ -695,23 +694,15 @@ namespace CourseWork
             this.TableView.AllowUserToDeleteRows = false;
             this.TableView.AllowUserToResizeColumns = false;
             this.TableView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.TableView.ColumnHeadersHeight = 45;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TableView.DefaultCellStyle = dataGridViewCellStyle2;
             this.TableView.Location = new System.Drawing.Point(19, 137);
             this.TableView.Name = "TableView";
             this.TableView.ReadOnly = true;

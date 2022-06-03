@@ -5,8 +5,8 @@ namespace CourseWork
 {
     public partial class UserLogin : Form
     {
-        Credit credit;
-        Deposit deposit;
+        private Credit credit;
+        private Deposit deposit;
 
         public UserLogin()
         {

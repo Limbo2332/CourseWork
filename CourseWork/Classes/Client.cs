@@ -17,7 +17,7 @@ namespace CourseWork
         {
 
         }
-        public Guid CreditId { get; set; }
-        public Guid DepositId { get; set; }
+        public Credit credit { get; set; }
+        public Deposit deposit { get; set; }
     }
 }
