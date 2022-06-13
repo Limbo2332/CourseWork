@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CourseWork
+﻿namespace CourseWork
 {
     /// <summary>
     /// Посада в банку

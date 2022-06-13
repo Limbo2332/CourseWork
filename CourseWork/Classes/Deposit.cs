@@ -7,10 +7,6 @@ namespace CourseWork
     /// </summary>
     class Deposit
     {
-        /// <param name="ID">ID депозиту</param>
-        /// <param name="SumOfDeposit">Сума внеску(грн)</param>
-        /// <param name="InterestRate">Процентна ставка(%)</param>
-        /// <param name="Term">Термін(років)</param>
         private double interestRate;
         private double finalSum;
         public Deposit()

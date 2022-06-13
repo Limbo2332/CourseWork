@@ -1024,12 +1024,20 @@ namespace CourseWork
                             try
                             {
                                 int workExperience = Convert.ToInt32(InputEditParameter.Text);
+                                if(workExperience < 0 || workExperience > 10)
+                                {
+                                    throw new Exception();
+                                }
                                 employee.WorkExperience = workExperience;
                                 MessageBox.Show("Досвід співробітника успішно змінено!");
                             }
                             catch (FormatException)
                             {
                                 MessageBox.Show("Ви ввели недопустиме значення!");
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Ви ввели завелике значення. Досвід роботи не може бути більшим, ніж 10 років.");
                             }
                             Manager.UpdateLists();
                             return;

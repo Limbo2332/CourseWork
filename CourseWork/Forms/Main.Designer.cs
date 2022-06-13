@@ -43,7 +43,7 @@ namespace CourseWork
             this.UserLogin.Name = "UserLogin";
             this.UserLogin.Size = new System.Drawing.Size(328, 88);
             this.UserLogin.TabIndex = 0;
-            this.UserLogin.Text = "Увійти як користувач";
+            this.UserLogin.Text = "Увійти як клієнт";
             this.UserLogin.UseVisualStyleBackColor = false;
             this.UserLogin.Click += new System.EventHandler(this.UserLogin_Click);
             // 
