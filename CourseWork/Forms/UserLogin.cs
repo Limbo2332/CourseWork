@@ -78,7 +78,7 @@ namespace CourseWork
 
                 credit.SumOfCredit = sumOfCredit;
                 credit.Term = term;
-                credit.InterestRate = Bank.CountCreditProcent(credit);
+                credit.InterestRate = Bank.CountCreditPercent(credit);
 
                 CreditOutputPercent.Text = credit.InterestRate.ToString();
             }
@@ -162,7 +162,7 @@ namespace CourseWork
                     || deposit.Term > MAX_TERM_FOR_DEPOSIT)
                     throw new Exception();
 
-                deposit.InterestRate = Bank.CountDepositProcent(deposit);
+                deposit.InterestRate = Bank.CountDepositPercent(deposit);
                 deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
 
                 DepositOutputPercent.Text = deposit.InterestRate.ToString();

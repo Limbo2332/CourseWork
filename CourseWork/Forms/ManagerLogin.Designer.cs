@@ -30,7 +30,7 @@ namespace CourseWork
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerLogin));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видалитиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -445,7 +445,7 @@ namespace CourseWork
             this.InputRemovePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputRemovePhone.Location = new System.Drawing.Point(388, 236);
             this.InputRemovePhone.Name = "InputRemovePhone";
-            this.InputRemovePhone.Size = new System.Drawing.Size(123, 24);
+            this.InputRemovePhone.Size = new System.Drawing.Size(133, 24);
             this.InputRemovePhone.TabIndex = 23;
             this.InputRemovePhone.Text = "+380";
             // 
@@ -464,7 +464,7 @@ namespace CourseWork
             this.InputRemovePassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputRemovePassport.Location = new System.Drawing.Point(388, 173);
             this.InputRemovePassport.Name = "InputRemovePassport";
-            this.InputRemovePassport.Size = new System.Drawing.Size(123, 24);
+            this.InputRemovePassport.Size = new System.Drawing.Size(133, 24);
             this.InputRemovePassport.TabIndex = 21;
             // 
             // LabelRemovePassport
@@ -571,9 +571,9 @@ namespace CourseWork
             // InputEditPhone
             // 
             this.InputEditPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputEditPhone.Location = new System.Drawing.Point(411, 283);
+            this.InputEditPhone.Location = new System.Drawing.Point(395, 283);
             this.InputEditPhone.Name = "InputEditPhone";
-            this.InputEditPhone.Size = new System.Drawing.Size(123, 24);
+            this.InputEditPhone.Size = new System.Drawing.Size(139, 24);
             this.InputEditPhone.TabIndex = 33;
             this.InputEditPhone.Text = "+380";
             this.InputEditPhone.Visible = false;
@@ -581,7 +581,7 @@ namespace CourseWork
             // LabelEditPhone
             // 
             this.LabelEditPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelEditPhone.Location = new System.Drawing.Point(256, 271);
+            this.LabelEditPhone.Location = new System.Drawing.Point(244, 273);
             this.LabelEditPhone.Name = "LabelEditPhone";
             this.LabelEditPhone.Size = new System.Drawing.Size(133, 44);
             this.LabelEditPhone.TabIndex = 32;
@@ -592,16 +592,16 @@ namespace CourseWork
             // InputEditPassport
             // 
             this.InputEditPassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InputEditPassport.Location = new System.Drawing.Point(411, 220);
+            this.InputEditPassport.Location = new System.Drawing.Point(395, 214);
             this.InputEditPassport.Name = "InputEditPassport";
-            this.InputEditPassport.Size = new System.Drawing.Size(123, 24);
+            this.InputEditPassport.Size = new System.Drawing.Size(139, 24);
             this.InputEditPassport.TabIndex = 31;
             this.InputEditPassport.Visible = false;
             // 
             // LabelEditPassport
             // 
             this.LabelEditPassport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelEditPassport.Location = new System.Drawing.Point(265, 208);
+            this.LabelEditPassport.Location = new System.Drawing.Point(244, 204);
             this.LabelEditPassport.Name = "LabelEditPassport";
             this.LabelEditPassport.Size = new System.Drawing.Size(124, 44);
             this.LabelEditPassport.TabIndex = 30;
@@ -694,15 +694,15 @@ namespace CourseWork
             this.TableView.AllowUserToDeleteRows = false;
             this.TableView.AllowUserToResizeColumns = false;
             this.TableView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.TableView.ColumnHeadersHeight = 45;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Sitka Small", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.TableView.ColumnHeadersHeight = 70;
             this.TableView.Location = new System.Drawing.Point(19, 137);
             this.TableView.Name = "TableView";
             this.TableView.ReadOnly = true;

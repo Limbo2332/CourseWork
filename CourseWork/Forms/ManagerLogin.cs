@@ -106,16 +106,16 @@ namespace CourseWork
 
                 // регулярні вирази
 
-                Regex Name = new Regex(@"\w");
+                Regex Name = new Regex(@"\d|\W|\s");
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
                 const int AGE_OF_MAJORITY = 18;
                 const int RETIREMENT_AGE = 65;
 
-                if (firstName.Length < 2 || !Name.IsMatch(firstName))
+                if (firstName.Length < 2 || Name.IsMatch(firstName))
                     throw new Exception("Ви ввели недопустиме значення для імені.");
-                else if (lastName.Length < 2 || !Name.IsMatch(lastName))
+                else if (lastName.Length < 2 || Name.IsMatch(lastName))
                     throw new Exception("Ви ввели недопустиме значення для прізвища.");
                 else if (age < AGE_OF_MAJORITY || age > RETIREMENT_AGE)
                     throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");
@@ -176,17 +176,17 @@ namespace CourseWork
 
                 if (HasCredit(InputAddPassport, InputAddPhoneNumber))
                 {
-                    MessageBox.Show("Ця людина вже має кредит в нашому банку! Ми не можемо дати їй ще один кредит!");
+                    MessageBox.Show("Ця людина вже має кредит в нашому банку!");
                     return;
                 }
                 if (HasDeposit(InputAddPassport, InputAddPhoneNumber))
                 {
-                    MessageBox.Show("Ця людина вже має депозит в нашому банку! Ми не можемо дати їй ще один депозит!");
+                    MessageBox.Show("Ця людина вже має депозит в нашому банку!");
                     return;
                 }
                 if (IsEmployee(InputAddPassport, InputAddPhoneNumber))
                 {
-                    MessageBox.Show("Ця людина вже працює в нашому банку! Ми не можемо взяти її на роботу!");
+                    MessageBox.Show("Ця людина вже працює в нашому банку!");
                     return;
                 }
 
@@ -201,6 +201,11 @@ namespace CourseWork
                         if (finalEmployee.Salary < 6500 || finalEmployee.Salary > 100000)
                             throw new Exception("Зарплата не може бути більшою за 100000 грн і меншою за 6500 грн!");
 
+                    }
+                    catch (OverflowException)
+                    {
+                        MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
+                        return;
                     }
                     catch (FormatException)
                     {
@@ -225,14 +230,31 @@ namespace CourseWork
                     Credit credit = new Credit();
                     try
                     {
-                        credit.SumOfCredit = Convert.ToDouble(InputSum.Text);
-                        credit.Term = Convert.ToInt32(InputTerm.Text);
-                        credit.InterestRate = Bank.CountCreditProcent(credit);
+                        double sumOfCredit = Convert.ToDouble(InputSum.Text);
+                        int term = Convert.ToInt32(InputTerm.Text);
+                        if(sumOfCredit > 1000000 || sumOfCredit < 10000)
+                            throw new Exception("Сума кредиту не повинна перевищувати 1 млн гривень і не повинна бути меншою, ніж 10000 грн");
+                        if(term < 0 || term > 120)
+                            throw new Exception("Термін кредиту не може бути більший, ніж 10 років.");
+
+                        credit.SumOfCredit = sumOfCredit;
+                        credit.Term = term;
+                        credit.InterestRate = Bank.CountCreditPercent(credit);
                         credit.FinalSum = Bank.CountFinalSumOfCredit(credit);
                     }
-                    catch (Exception)
+                    catch (OverflowException)
                     {
-                        MessageBox.Show("Ви ввели недопустиме значення полей!(Інформація про кредит)");
+                        MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
+                        return;
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Ви ввели некоректне значення!");
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                         return;
                     }
 
@@ -254,14 +276,31 @@ namespace CourseWork
                     Deposit deposit = new Deposit();
                     try
                     {
-                        deposit.SumOfDeposit = Convert.ToDouble(InputSum.Text);
-                        deposit.Term = Convert.ToInt32(InputTerm.Text);
-                        deposit.InterestRate = Bank.CountDepositProcent(deposit);
+                        double sumOfDeposit = Convert.ToDouble(InputSum.Text);
+                        int term = Convert.ToInt32(InputTerm.Text);
+                        if (sumOfDeposit > 1000000 || sumOfDeposit < 1000)
+                            throw new Exception("Сума депозиту не повинна перевищувати 1 млн гривень і не повинна бути меншою, ніж 1000 грн");
+                        if (term < 0 || term > 60)
+                            throw new Exception("Термін депозиту не може бути більший, ніж 5 років.");
+
+                        deposit.SumOfDeposit = sumOfDeposit;
+                        deposit.Term = term;
+                        deposit.InterestRate = Bank.CountDepositPercent(deposit);
                         deposit.FinalSum = Bank.CountFinalSumOfDeposit(deposit);
                     }
-                    catch (Exception)
+                    catch (OverflowException)
                     {
-                        MessageBox.Show("Ви ввели недопустиме значення полей!(Інформація про депозит)");
+                        MessageBox.Show("Ви ввели недопустимі значення для деяких полей!");
+                        return;
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Ви ввели некоректне значення!");
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                         return;
                     }
                     deposit.ID = Guid.NewGuid();
@@ -748,7 +787,7 @@ namespace CourseWork
                                     throw (new Exception("Термін кредиту не може бути більшим, ніж 10 років!"));
 
                                 credit.Term = term;
-                                credit.InterestRate = Bank.CountCreditProcent(credit);
+                                credit.InterestRate = Bank.CountCreditPercent(credit);
                                 credit.FinalSum = Bank.CountFinalSumOfCredit(credit);
 
                                 MessageBox.Show("Термін успішно змінена! Попередження: оскільки Ви змінили термін, то і інші " +
@@ -951,8 +990,7 @@ namespace CourseWork
                                     throw (new Exception("Сума до виплати не може бути більшою, за 1,05 млн гривень і " +
                                         "меншою за 10001 гривню!"));
                                 deposit.FinalSum = finalSum;
-                                deposit.InterestRate = Bank.CountDepositProcent(deposit);
-                                deposit.SumOfDeposit = Math.Round(finalSum / Math.Pow(1 + deposit.InterestRate / 100, deposit.Term / 12), 2);
+                                deposit.SumOfDeposit = Math.Round(finalSum / Math.Pow(1 + deposit.InterestRate / 100, (double)deposit.Term / 12), 2);
                                 MessageBox.Show("Сума виплати успішно змінено! Попередження: оскільки Ви змінили суму виплати, то і інші " +
                                     "характеристики автоматично змінені!");
                             }

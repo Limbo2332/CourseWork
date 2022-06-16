@@ -138,7 +138,7 @@ namespace CourseWork
             this.CreditOutputPercent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CreditOutputPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CreditOutputPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreditOutputPercent.Location = new System.Drawing.Point(342, 631);
+            this.CreditOutputPercent.Location = new System.Drawing.Point(342, 642);
             this.CreditOutputPercent.Name = "CreditOutputPercent";
             this.CreditOutputPercent.ReadOnly = true;
             this.CreditOutputPercent.Size = new System.Drawing.Size(114, 30);
@@ -150,9 +150,9 @@ namespace CourseWork
             // 
             this.CreditCountPercentButton.BackColor = System.Drawing.Color.Honeydew;
             this.CreditCountPercentButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreditCountPercentButton.Location = new System.Drawing.Point(226, 528);
+            this.CreditCountPercentButton.Location = new System.Drawing.Point(225, 516);
             this.CreditCountPercentButton.Name = "CreditCountPercentButton";
-            this.CreditCountPercentButton.Size = new System.Drawing.Size(343, 73);
+            this.CreditCountPercentButton.Size = new System.Drawing.Size(343, 109);
             this.CreditCountPercentButton.TabIndex = 9;
             this.CreditCountPercentButton.Text = "Розрахувати процент, за яким банк готовий видати кредит";
             this.CreditCountPercentButton.UseVisualStyleBackColor = false;
@@ -167,7 +167,7 @@ namespace CourseWork
             this.ConfirmCreditButton.Name = "ConfirmCreditButton";
             this.ConfirmCreditButton.Size = new System.Drawing.Size(287, 78);
             this.ConfirmCreditButton.TabIndex = 10;
-            this.ConfirmCreditButton.Text = "Підтвердити отримання кредиту";
+            this.ConfirmCreditButton.Text = "Підтвердити оформлення кредиту";
             this.ConfirmCreditButton.UseVisualStyleBackColor = false;
             this.ConfirmCreditButton.Visible = false;
             this.ConfirmCreditButton.Click += new System.EventHandler(this.ConfirmCreditButton_Click);
@@ -222,9 +222,9 @@ namespace CourseWork
             // 
             this.DepositCountPercentButton.BackColor = System.Drawing.Color.Honeydew;
             this.DepositCountPercentButton.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DepositCountPercentButton.Location = new System.Drawing.Point(855, 528);
+            this.DepositCountPercentButton.Location = new System.Drawing.Point(853, 516);
             this.DepositCountPercentButton.Name = "DepositCountPercentButton";
-            this.DepositCountPercentButton.Size = new System.Drawing.Size(343, 73);
+            this.DepositCountPercentButton.Size = new System.Drawing.Size(343, 109);
             this.DepositCountPercentButton.TabIndex = 15;
             this.DepositCountPercentButton.Text = "Розрахувати процент, за яким банк готовий надати депозит\r\n";
             this.DepositCountPercentButton.UseVisualStyleBackColor = false;
@@ -236,7 +236,7 @@ namespace CourseWork
             this.DepositOutputPercent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DepositOutputPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DepositOutputPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DepositOutputPercent.Location = new System.Drawing.Point(985, 631);
+            this.DepositOutputPercent.Location = new System.Drawing.Point(982, 642);
             this.DepositOutputPercent.Name = "DepositOutputPercent";
             this.DepositOutputPercent.ReadOnly = true;
             this.DepositOutputPercent.Size = new System.Drawing.Size(114, 30);

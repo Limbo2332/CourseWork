@@ -60,16 +60,16 @@ namespace CourseWork
 
                 // регулярні вирази
 
-                Regex Name = new Regex(@"\w");
+                Regex Name = new Regex(@"\d|\W|\s");
                 Regex ForPassportNumber = new Regex(@"^\d{9}$");
                 Regex ForPhoneNumber = new Regex(@"\+380\d{9}$");
 
                 const int AGE_OF_MAJORITY = 18;
                 const int RETIREMENT_AGE = 65;
 
-                if (firstName.Length < 2 || !Name.IsMatch(firstName))
+                if (firstName.Length < 2 || Name.IsMatch(firstName))
                     throw new Exception("Ви ввели недопустиме значення для імені.");
-                else if (lastName.Length < 2 || !Name.IsMatch(lastName))
+                else if (lastName.Length < 2 || Name.IsMatch(lastName))
                     throw new Exception("Ви ввели недопустиме значення для прізвища.");
                 else if (age < AGE_OF_MAJORITY || age > RETIREMENT_AGE)
                     throw new Exception("Ви повинні бути повнолітнім або не бути пенсіонером.");

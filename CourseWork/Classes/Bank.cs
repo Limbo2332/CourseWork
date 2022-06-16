@@ -18,9 +18,9 @@ namespace CourseWork
         }
 
         /// <summary>
-        /// Розраховує процент для кредиту в банку.
+        /// Розраховує процент для кредиту в банку
         /// </summary>
-        static public double CountCreditProcent(Credit credit)
+        static public double CountCreditPercent(Credit credit)
         {
 
             if (credit.Term < 12)
@@ -46,7 +46,7 @@ namespace CourseWork
         /// <summary>
         /// Розраховує процент для депозиту в банку.
         /// </summary>
-        static public double CountDepositProcent(Deposit deposit)
+        static public double CountDepositPercent(Deposit deposit)
         {
 
             if (deposit.Term < 6)

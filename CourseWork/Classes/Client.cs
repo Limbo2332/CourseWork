@@ -8,6 +8,7 @@ namespace CourseWork
 {
     class Client : Person
     {
+        // Ключ сутності як у базового класу
         public Client() : base()
         {
 

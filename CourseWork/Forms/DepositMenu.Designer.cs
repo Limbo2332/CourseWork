@@ -267,7 +267,7 @@ namespace CourseWork
             this.ConfirmDepositButton.Name = "ConfirmDepositButton";
             this.ConfirmDepositButton.Size = new System.Drawing.Size(287, 102);
             this.ConfirmDepositButton.TabIndex = 59;
-            this.ConfirmDepositButton.Text = "Підтвердити отримання депозиту\r\n";
+            this.ConfirmDepositButton.Text = "Підтвердити оформлення депозиту\r\n";
             this.ConfirmDepositButton.UseVisualStyleBackColor = false;
             this.ConfirmDepositButton.Click += new System.EventHandler(this.ConfirmDepositButton_Click);
             // 
