@@ -130,7 +130,7 @@ namespace CourseWork
             OutputSumOfDeposit.Text = deposit.SumOfDeposit.ToString();
             OutputInterestRate.Text = deposit.InterestRate.ToString();
             OutputFinalSum.Text = deposit.FinalSum.ToString();
-            OutputMontlyPayment.Text = deposit.AverageMontlyIncome().ToString();
+            OutputMontlyPayment.Text = deposit.AverageMonthlyIncome().ToString();
             OutputTerm.Text = deposit.Term.ToString();
         }
         #endregion

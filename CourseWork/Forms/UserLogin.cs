@@ -190,7 +190,7 @@ namespace CourseWork
                 depositMenu.OutputInterestRate.Text = deposit.InterestRate.ToString();
                 depositMenu.OutputTerm.Text = deposit.Term.ToString();
                 depositMenu.OutputFinalSum.Text = deposit.FinalSum.ToString();
-                depositMenu.OutputMontlyPayment.Text = deposit.AverageMontlyIncome().ToString();
+                depositMenu.OutputMontlyPayment.Text = deposit.AverageMonthlyIncome().ToString();
                 depositMenu.Owner = this;
                 depositMenu.Show();
 

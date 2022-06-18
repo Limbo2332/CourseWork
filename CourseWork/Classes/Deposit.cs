@@ -50,7 +50,7 @@ namespace CourseWork
         /// <summary>
         /// Розраховує середній місячний дохід
         /// </summary>
-        public double AverageMontlyIncome()
+        public double AverageMonthlyIncome()
         {
             return Math.Round((FinalSum - SumOfDeposit) / Term, 2);
         }
